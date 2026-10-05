@@ -194,6 +194,40 @@ details.det[open] > summary::after{content:"▴"}
 details.det[open] > summary{margin-bottom:4px}
 details.det ul.det{margin-top:6px}
 
+/* ===== 鳳バス 時刻表 ===== */
+.rtabs{display:flex;gap:6px;margin:15px 0 12px}
+.rtabs button{flex:1;min-height:46px;border-radius:11px;border:1px solid var(--line);
+  background:var(--bg);color:var(--ink);font-family:var(--ff-g);font-weight:700;
+  font-size:.88rem;cursor:pointer}
+.rtabs button[aria-selected="true"]{background:var(--plum-700);border-color:var(--plum-700);color:#fff}
+.rdesc{font-size:.82rem;color:var(--ink-2);margin:0}
+.depline{margin-top:9px;padding:11px 13px;border-radius:10px;background:var(--plum-50);
+  border-left:3px solid var(--plum-300);font-size:.84rem;color:var(--ink);line-height:1.7}
+.depline b{display:block;margin-top:2px;font-family:var(--ff-m);font-size:1.04rem;
+  font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.shint{margin:10px 0 6px;font-size:.76rem;color:var(--ink-3)}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);
+  border-radius:12px;background:var(--surf)}
+table.bus{border-collapse:separate;border-spacing:0;font-size:.85rem;min-width:100%}
+table.bus th,table.bus td{white-space:nowrap;padding:8px 9px;text-align:center;
+  border-bottom:1px solid var(--line);line-height:1.5}
+table.bus thead th{background:var(--plum-100);font-family:var(--ff-g);font-size:.76rem;
+  font-weight:700;color:var(--plum-700)}
+table.bus tbody th{position:sticky;left:0;background:var(--surf);text-align:left;
+  font-family:var(--ff-g);font-weight:700;font-size:.81rem;box-shadow:1px 0 0 var(--line)}
+table.bus thead th:first-child{position:sticky;left:0;background:var(--plum-100);
+  text-align:left;z-index:2;box-shadow:1px 0 0 var(--line)}
+table.bus td{font-family:var(--ff-m);font-weight:600;font-size:.84rem;font-variant-numeric:tabular-nums}
+table.bus td.x{color:var(--ink-3);font-family:var(--ff-g);font-weight:400}
+table.bus tbody tr:last-child th,table.bus tbody tr:last-child td{border-bottom:0}
+table.bus tbody tr.ends th,table.bus tbody tr.ends td{background:var(--plum-50)}
+.ud{display:inline-block;margin-left:5px;padding:1px 5px;border-radius:5px;
+  background:var(--plum-50);font-weight:700;font-size:.68rem;color:var(--plum-600)}
+.bnote{list-style:none;margin:11px 0 0;padding:0;font-size:.81rem;color:var(--ink-2);line-height:1.8}
+.bnote li{padding-left:1.15em;text-indent:-1.15em}
+.bnote li::before{content:"※ "}
+.busmemo{margin-top:13px;font-size:.8rem;color:var(--ink-2);line-height:1.8}
+
 /* ===== アーティスト ===== */
 .acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-top:12px}
 .act{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:13px 14px;
@@ -348,9 +382,16 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
     <h3>路線バス</h3>
     <p>28番・29番・228番（読谷線）／20番（名護西線）</p>
   </div>
-  <div class="box">
+  <div class="box" id="bus">
     <h3>鳳バス 臨時便</h3>
-    <p>読谷村コミュニティバス「鳳バス」が、10月24日（土）・25日（日）に臨時便を運行します。</p>
+    <p>読谷村コミュニティバス「鳳バス」が、<b>10月24日（土）・25日（日）</b>の2日間、北・南・西の3ルートで臨時便を運行します。両日とも同じ時刻です。</p>
+    <div class="rtabs" role="tablist" aria-label="バスのルート">
+      <button role="tab" data-r="n" aria-selected="true">北ルート</button>
+      <button role="tab" data-r="s" aria-selected="false">南ルート</button>
+      <button role="tab" data-r="w" aria-selected="false">西ルート</button>
+    </div>
+    <div id="busPanel"></div>
+    <p class="busmemo">時刻は目安です。道路の混雑により遅れることがあります。運賃など詳しくは読谷村役場 <a class="tnum" href="tel:0989829201">098-982-9201</a> へお問い合わせください。</p>
   </div>
   <div class="box">
     <h3>会場</h3>
@@ -409,6 +450,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
    d=日付 / tag=ラベル / pri:1 でラベルが濃い紫（緊急告知用） / t=本文
    ============================================================ */
 var NEWS=[
+ {d:'2026.10.05',tag:'お知らせ',t:'鳳バス臨時便（北・南・西ルート）の時刻表を「交通」に掲載しました。'},
  {d:'2026.10.05',tag:'お知らせ',t:'プログラム、ピースコンサートの出演アーティスト、展示・イベントの情報を公開しました。'},
  {d:'2026.10.01',tag:'重要',pri:1,t:'第52回は会場レイアウトが大きく変わります。会場マップは決まりしだいこのサイトで公開します。'},
  {d:'2026.10.01',tag:'お知らせ',t:'第52回読谷まつりの特設サイトを公開しました。'}
@@ -571,10 +613,52 @@ function renderProg(day){
 }
 renderProg('24');
 
+/* ---------- 鳳バス 臨時便 ---------- */
+var BUS={
+ n:{t:'北ルート',d:'長浜・渡慶次・儀間ほか 村北部',b:["1便", "2便", "3便", "4便", "5便", "6便"],s:[["読谷村役場","発",[0,"15:00","16:30","18:00","19:35","21:15"]],["読谷中学校前","下",[0,"15:01","16:31","18:01","19:36","21:16"]],["都屋","上",[0,"15:06","16:36","18:06","19:41","21:21"]],["読谷診療所前","上",[0,"15:07","16:37","18:07","19:42","21:22"]],["大当","上",[0,"15:08","16:38","18:08","19:43","21:23"]],["丸大波平店","上",[0,"15:10","16:40","18:10","19:45","21:25"]],["波平",null,[0,"15:11","16:41","18:11","19:46","21:26"]],["高志保入口","下",[0,"15:12","16:42","18:12","19:47","21:27"]],["高志保","下",[0,"15:13","16:43","18:13","19:48","21:28"]],["宇座公民館","下",[0,"15:14","16:44","18:14","19:49","21:29"]],["長浜吹出原",null,["13:45","15:17","16:47","18:17","19:52","21:32"]],["長浜公民館西",null,["13:48","15:20","16:50","18:20","19:55","21:35"]],["船地原",null,["13:49","15:21","16:51","18:21","19:56","21:36"]],["川平",null,["13:50","15:22","16:52","18:22","19:57","21:37"]],["瀬名波",null,["13:52","15:24","16:54","18:24","19:59","21:39"]],["渡慶次原",null,["13:54","15:26","16:56","18:26","20:01","21:41"]],["渡慶次公民館",null,["13:55","15:27","16:57","18:27","20:02","21:42"]],["宇座",null,["13:58","15:30","17:00","18:30","20:05","21:45"]],["儀間",null,["14:01","15:33","17:03","18:33","20:08","21:48"]],["渡慶次寺原",null,["14:04","15:36","17:06","18:36","20:11","21:51"]],["儀間公民館前",null,["14:06","15:38","17:08","18:38","20:13","21:53"]],["高志保","上",["14:08","15:40","17:10","18:40","20:15",0]],["高志保入口","上",["14:09","15:41","17:11","18:41","20:16",0]],["旧役場前",null,["14:10","15:42","17:12","18:42","20:17",0]],["イオンタウン読谷座喜味",null,["14:13","15:45","17:15","18:45","20:20",0]],["福祉センター",null,["14:15","15:47","17:17","18:47","20:22",0]],["読谷村役場","着",["14:17","15:49","17:19","18:49","20:24",0]]],
+  note:['1便は長浜吹出原 13:45発からの運行です（読谷村役場 14:17着）。','6便は儀間公民館前の次が読谷バスターミナルで終点です。']},
+ s:{t:'南ルート',d:'大湾・古堅・渡具知・楚辺ほか 村南部',b:["2便", "3便", "4便", "5便", "6便"],s:[["読谷村役場","発",["13:55","15:45","17:35","19:25","21:15"]],["伊良皆(県道6号)","下",["14:01","15:51","17:41","19:31","21:21"]],["大木中道",null,["14:02","15:52","17:42","19:32","21:22"]],["県営比謝団地南",null,["14:03","15:53","17:43","19:33","21:23"]],["サンエー大湾",null,["14:08","15:58","17:48","19:38","21:28"]],["比謝公民館",null,["14:09","15:59","17:49","19:39","21:29"]],["大湾公民館",null,["14:10","16:00","17:50","19:40","21:30"]],["古堅",null,["14:12","16:02","17:52","19:42","21:32"]],["古堅皆呉原",null,["14:15","16:05","17:55","19:45","21:35"]],["渡具知",null,["14:16","16:06","17:56","19:46","21:36"]],["渡具知公民館",null,["14:17","16:07","17:57","19:47","21:37"]],["渡具知後原",null,["14:20","16:10","18:00","19:50","21:40"]],["イオンタウン読谷ショッピングセンター","着",["14:23","16:13","18:03","19:53","21:43"]],["イオンタウン読谷ショッピングセンター","発",["14:33","16:23","18:13","20:03","21:53"]],["古堅小学校前","上",["14:39","16:29","18:19","20:09","21:59"]],["赤犬子宮前","上",["14:41","16:31","18:21","20:11","22:01"]],["大添","上",["14:42","16:32","18:22","20:12","22:02"]],["楚辺","上",["14:43","16:33","18:23","20:13","22:03"]],["楚辺中道","上",["14:44","16:34","18:24","20:14","22:04"]],["都屋中道","上",["14:45","16:35","18:25","20:15","22:05"]],["都屋","上",["14:46","16:36","18:26","20:16","22:06"]],["読谷診療所前","上",["14:48","16:38","18:28","20:18","22:08"]],["大当","上",["14:49","16:39","18:29","20:19","22:09"]],["丸大波平店","上",["14:51","16:41","18:31","20:21",0]],["読谷中学校前","上",["14:57","16:47","18:37","20:27",0]],["読谷村役場","着",["14:59","16:49","18:39","20:29",0]]],
+  note:['1便は瀬名波入口 13:35発 → 読谷村役場 13:46着のみの運行です。','6便は大当の次が読谷バスターミナルで終点です。']},
+ w:{t:'西ルート',d:'喜名・座喜味・やちむんの里ほか 村東部〜南部',b:["2便", "3便", "4便", "5便", "6便"],s:[["読谷村役場","発",["13:55","15:45","17:35","19:25","21:15"]],["喜名公民館前",null,["13:58","15:48","17:38","19:28","21:18"]],["親志入口",null,["14:01","15:51","17:41","19:31","21:21"]],["シーレイク座喜味",null,["14:03","15:53","17:43","19:33","21:23"]],["横田公園",null,["14:09","15:59","17:49","19:39","21:29"]],["やちむんの里入口",null,["14:11","16:01","17:51","19:41","21:31"]],["座喜味入口",null,["14:12","16:02","17:52","19:42","21:32"]],["座喜味",null,["14:14","16:04","17:54","19:44","21:34"]],["福祉センター",null,["14:16","16:06","17:56","19:46","21:36"]],["読谷村役場","継",["14:18","16:08","17:58","19:48","21:38"]],["読谷中学校前","下",["14:19","16:09","17:59","19:49","21:39"]],["大当","下",["14:25","16:15","18:05","19:55","21:45"]],["読谷診療所前","下",["14:26","16:16","18:06","19:56","21:46"]],["都屋中道","下",["14:29","16:19","18:09","19:59","21:49"]],["楚辺中道","下",["14:31","16:21","18:11","20:01","21:51"]],["楚辺","下",["14:33","16:23","18:13","20:03","21:53"]],["大添","下",["14:36","16:26","18:16","20:06","21:56"]],["赤犬子宮前","下",["14:38","16:28","18:18","20:08","21:58"]],["古堅小学校前","下",["14:40","16:30","18:20","20:10","22:00"]],["イオンタウン読谷ショッピングセンター","着",["14:45","16:35","18:25","20:15","22:05"]],["イオンタウン読谷ショッピングセンター","発",["14:55","16:45","18:35","20:25","22:15"]],["古堅南小学校",null,["14:57","16:47","18:37","20:27","22:17"]],["大湾西原",null,["14:59","16:49","18:39","20:29","22:19"]],["大木南",null,["15:01","16:51","18:41","20:31","22:21"]],["伊良皆(県道6号)","上",["15:04","16:54","18:44","20:34","22:24"]],["伊良皆(国58号)",null,["15:06","16:56","18:46","20:36",0]],["読谷村役場","着",["15:09","16:59","18:49","20:39",0]]],
+  note:['1便は瀬名波入口 13:35発 → 読谷村役場 13:46着のみの運行です。','6便は大木南の次が読谷バスターミナルで終点です。']}
+};
+function renderBus(k){
+  var r=BUS[k]; if(!r) return;
+  var depTimes=r.s[0][2].filter(function(x){return x}).join(' / ');
+  var h='<p class="rdesc">'+esc(r.d)+'</p>'+
+    '<p class="depline">会場（読谷村役場）発<b>'+esc(depTimes)+'</b></p>'+
+    '<details class="det"><summary>停留所ごとの時刻表をみる（'+r.s.length+'停留所）</summary>'+
+    '<p class="shint">横にスクロールすると、すべての便が見られます →</p>'+
+    '<div class="tscroll" tabindex="0" role="region" aria-label="'+esc(r.t)+'の時刻表">'+
+    '<table class="bus"><thead><tr><th>停留所</th>'+
+    r.b.map(function(b){return '<th>'+esc(b)+'</th>'}).join('')+
+    '</tr></thead><tbody>'+
+    r.s.map(function(s,i){
+      var ud=s[1]?'<span class="ud">'+esc(s[1]==='継'?'経由':s[1])+'</span>':'';
+      var ends=(i===0||i===r.s.length-1)?' class="ends"':'';
+      return '<tr'+ends+'><th scope="row">'+esc(s[0])+ud+'</th>'+
+        s[2].map(function(t){return t?'<td>'+esc(t)+'</td>':'<td class="x">—</td>'}).join('')+
+        '</tr>'}).join('')+
+    '</tbody></table></div></details>'+
+    '<ul class="bnote">'+r.note.map(function(n){return '<li>'+esc(n)+'</li>'}).join('')+'</ul>';
+  $('#busPanel').innerHTML=h;
+  var d=$('#busPanel details'); if(d) d.addEventListener('toggle',fitHint);
+}
+function fitHint(){
+  var sc=$('#busPanel .tscroll'), hint=$('#busPanel .shint');
+  if(sc&&hint) hint.style.display = (sc.scrollWidth>sc.clientWidth+2) ? '' : 'none';
+}
+window.addEventListener('resize',fitHint);
+renderBus('n');
+
+
 document.addEventListener('click',function(e){
   var b=e.target.closest('.daytabs button');
   if(b){$$('.daytabs button').forEach(function(x){x.setAttribute('aria-selected',x===b)});
     renderProg(b.dataset.day);return}
+  var r=e.target.closest('.rtabs button');
+  if(r){$$('.rtabs button').forEach(function(x){x.setAttribute('aria-selected',x===r)});
+    renderBus(r.dataset.r);return}
 });
 
 /* ---------- アクセス解析の注記（GA_IDを設定したときだけ表示） ---------- */
