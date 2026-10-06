@@ -205,22 +205,37 @@ details.det ul.det{margin-top:6px}
   border-left:3px solid var(--plum-300);font-size:.84rem;color:var(--ink);line-height:1.7}
 .depline b{display:block;margin-top:2px;font-family:var(--ff-m);font-size:1.04rem;
   font-variant-numeric:tabular-nums;letter-spacing:.01em}
-.shint{margin:10px 0 6px;font-size:.76rem;color:var(--ink-3)}
-.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);
-  border-radius:12px;background:var(--surf)}
-table.bus{border-collapse:separate;border-spacing:0;font-size:.85rem;min-width:100%}
-table.bus th,table.bus td{white-space:nowrap;padding:8px 9px;text-align:center;
-  border-bottom:1px solid var(--line);line-height:1.5}
-table.bus thead th{background:var(--plum-100);font-family:var(--ff-g);font-size:.76rem;
-  font-weight:700;color:var(--plum-700)}
-table.bus tbody th{position:sticky;left:0;background:var(--surf);text-align:left;
-  font-family:var(--ff-g);font-weight:700;font-size:.81rem;box-shadow:1px 0 0 var(--line)}
-table.bus thead th:first-child{position:sticky;left:0;background:var(--plum-100);
-  text-align:left;z-index:2;box-shadow:1px 0 0 var(--line)}
-table.bus td{font-family:var(--ff-m);font-weight:600;font-size:.84rem;font-variant-numeric:tabular-nums}
-table.bus td.x{color:var(--ink-3);font-family:var(--ff-g);font-weight:400}
-table.bus tbody tr:last-child th,table.bus tbody tr:last-child td{border-bottom:0}
-table.bus tbody tr.ends th,table.bus tbody tr.ends td{background:var(--plum-50)}
+.bfind{width:100%;min-height:46px;margin:12px 0 10px;padding:0 14px;box-sizing:border-box;
+  border-radius:11px;border:1px solid var(--line-2);background:var(--surf);
+  font-family:var(--ff-g);font-size:.9rem;color:var(--ink)}
+.bfind::placeholder{color:var(--ink-3)}
+ul.stoplist{list-style:none;margin:0;padding:0;border:1px solid var(--line);
+  border-radius:12px;background:var(--surf);overflow:hidden}
+ul.stoplist > li{padding:10px 12px;border-bottom:1px solid var(--line)}
+ul.stoplist > li:last-child{border-bottom:0}
+ul.stoplist > li.ends{background:var(--plum-50)}
+ul.stoplist > li.shead{position:sticky;z-index:1;padding-block:7px;
+  top:calc(var(--hdh) + 59px + env(safe-area-inset-top,0px));
+  background:var(--plum-100);border-bottom:1px solid var(--line-2)}
+.shead .sname{display:none}
+.shead .stimes{margin:0;font-family:var(--ff-g);font-weight:700;font-size:.72rem;color:var(--plum-700)}
+.sname{font-family:var(--ff-g);font-weight:700;font-size:.89rem;line-height:1.5}
+.stimes{display:grid;gap:2px 4px;margin-top:3px;font-family:var(--ff-m);font-weight:600;
+  font-size:.88rem;font-variant-numeric:tabular-nums;color:var(--plum-700);letter-spacing:-.01em}
+.stimes i{font-style:normal;color:var(--ink-3);font-family:var(--ff-g);font-weight:400}
+.fh{margin:16px 0 0;font-family:var(--ff-g);font-size:.86rem;font-weight:700;color:var(--plum-700)}
+ul.fare{list-style:none;margin:7px 0 0;padding:0;font-size:.86rem}
+ul.fare li{display:flex;align-items:baseline;gap:10px;padding:7px 0;
+  border-bottom:1px dashed var(--line);color:var(--ink-2)}
+ul.fare li:last-child{border-bottom:0}
+ul.fare li span{flex:1}
+ul.fare li b{font-family:var(--ff-m);font-size:1rem;color:var(--ink);white-space:nowrap}
+.bempty{padding:18px 14px;text-align:center;font-size:.85rem;color:var(--ink-2)}
+@media(min-width:620px){
+  ul.stoplist > li{display:grid;grid-template-columns:13.5em 1fr;align-items:baseline;gap:14px}
+  .stimes{margin-top:0;font-size:.92rem;gap:2px 8px}
+  .shead .sname{display:block;font-size:.72rem;color:var(--plum-700)}
+}
 .ud{display:inline-block;margin-left:5px;padding:1px 5px;border-radius:5px;
   background:var(--plum-50);font-weight:700;font-size:.68rem;color:var(--plum-600)}
 .bnote{list-style:none;margin:11px 0 0;padding:0;font-size:.81rem;color:var(--ink-2);line-height:1.8}
@@ -391,7 +406,14 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
       <button role="tab" data-r="w" aria-selected="false">西ルート</button>
     </div>
     <div id="busPanel"></div>
-    <p class="busmemo">時刻は目安です。道路の混雑により遅れることがあります。運賃など詳しくは読谷村役場 <a class="tnum" href="tel:0989829201">098-982-9201</a> へお問い合わせください。</p>
+    <h4 class="fh">運賃（通常運行時と同じです）</h4>
+    <ul class="fare">
+      <li><span>大人</span><b class="tnum">200円</b></li>
+      <li><span>小中学生・65歳以上・障がいのある方</span><b class="tnum">100円</b></li>
+      <li><span>小学生未満（2人まで）</span><b>無料</b></li>
+      <li><span>小学生未満（3人目から）</span><b class="tnum">100円</b></li>
+    </ul>
+    <p class="busmemo">時刻は目安です。道路の混雑により遅れることがあります。お問い合わせは読谷村役場 <a class="tnum" href="tel:0989829201">098-982-9201</a> へ。</p>
   </div>
   <div class="box">
     <h3>会場</h3>
@@ -450,6 +472,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
    d=日付 / tag=ラベル / pri:1 でラベルが濃い紫（緊急告知用） / t=本文
    ============================================================ */
 var NEWS=[
+ {d:'2026.10.06',tag:'更新',t:'鳳バス臨時便の運賃を掲載しました。創作「進貢船」一般開放の場所、ジュニアフェスティバル・読谷山花織展示即売会の時間、ピースコンサートの出演者表記を更新しました。'},
  {d:'2026.10.05',tag:'お知らせ',t:'鳳バス臨時便（北・南・西ルート）の時刻表を「交通」に掲載しました。'},
  {d:'2026.10.05',tag:'お知らせ',t:'プログラム、ピースコンサートの出演アーティスト、展示・イベントの情報を公開しました。'},
  {d:'2026.10.01',tag:'重要',pri:1,t:'第52回は会場レイアウトが大きく変わります。会場マップは決まりしだいこのサイトで公開します。'},
@@ -488,7 +511,7 @@ var PROG={
   {t:'14:15',n:'村内小学4年生児童による集団演技',
    det:['古堅南小学校、渡慶次小学校、読谷小学校、喜名小学校、古堅小学校']},
   {t:'15:30',n:'読谷高校ダンス部'},
-  {t:'15:30',n:'創作「進貢船」一般開放',note:'18:00まで／読谷村役場 北側駐車場'},
+  {t:'15:30',n:'創作「進貢船」一般開放',note:'18:00まで／まつり会場内'},
   {t:'16:00',n:'読谷村文化協会',
    det:['演舞：沖縄空手道協会上地流読谷道場／沖縄上地流唐手道保存会読谷修武館',
         '日舞サークル葵の会','真美健康体操サークル','フラダンス部会','しまうた部会','演劇部会']},
@@ -503,7 +526,7 @@ var PROG={
         {g:'歌舞「迎え誇ら」',items:['かぎやで風：金城末子琉舞道場',
           '器楽演奏：渡りざう、瀧落菅撹、湊くり節、揚作田節',
           '上り口説：新垣満子琉舞研究所','浜千鳥：古堅自治会','瓦屋：神谷みつ子琉舞研究所',
-          '秋の踊り：石嶺信子琉舞道場','京太郎：伊良皆伝統芸能保存会','湊くり節：津覇澄子琉舞練場']},
+          '秋の踊り：石嶺信子琉舞道場','京太郎：伊良皆芸能保存会','湊くり節：津覇澄子琉舞練場']},
         {g:'フィナーレ',items:['踊りクヮディーサー：村女性の会キラリ・各自治会の婦人会員']},
         {g:'赤犬子退場',items:['座直し演奏（かぎやで風節）']}]},
   {t:'20:30',n:'花火',cls:'fire'}
@@ -512,7 +535,7 @@ var PROG={
   {t:'8:30',n:'第31回 読谷まつり少年野球大会 決勝戦',note:'ゆんたんざソフトボール場（試合開始予定）'},
   {t:'11:30',n:'盆栽展・テナント営業'},
   {t:'12:30',n:'第31回 読谷まつり少年野球大会 表彰式'},
-  {t:'12:30',n:'創作「進貢船」一般開放',note:'15:00まで／読谷村役場 北側駐車場'},
+  {t:'12:30',n:'創作「進貢船」一般開放',note:'15:00まで／まつり会場内'},
   {t:'13:00',n:'団体演技',
    det:['読谷村老人クラブ連合会','読谷村子ども会育成連絡協議会']},
   {t:'15:00',n:'受け継ごう読谷（ふるさと）の心',cls:'hl',
@@ -547,7 +570,7 @@ var PROG={
 var ACTS=[
  ['島袋 優（BEGIN）と沖縄オールスターズ',''],['古謝 美佐子',''],['きいやま商店',''],
  ['照屋工務店','Vo. ガレッジセール・ゴリ'],['川満 ゆうき',''],['ナオキ屋',''],
- ['ありんくりん',''],['けいたりん','プロパン7'],['空馬 良樹',''],['初恋クロマニヨン','']
+ ['ありんくりん',''],['けいたりん','プロパン7'],['空馬 良樹','MC'],['初恋クロマニヨン','MC']
 ];
 
 /* ============================================================
@@ -558,16 +581,15 @@ var EVENTS=[
   items:['入場無料','常設展示　読谷の歴史と文化、自然、美術工芸品']},
  {h:'児童生徒作品展',when:'読谷村文化センター 1F中ホール',items:[]},
  {h:'第21回 ジュニアフェスティバル in 読谷まつり',when:'読谷村文化センター ふれあい広場 特設ステージ',
-  items:['10月24日（土）16:30〜20:30頃','10月25日（日）18:00〜20:00頃'],
+  items:['10月24日（土）15:30頃〜20:30頃','10月25日（日）17:00頃〜20:00頃'],
   p:'児童館音楽部、ダンスチーム、高校ダンス部など。熱いBEATでパワー全開。'},
  {h:'呈茶',when:'読谷村文化センター 1F談話室',
   items:['10月24日（土）14:00〜16:00','10月25日（日）13:00〜16:00','泉川社中、読谷高校、読谷中学校、渡慶次小学校']},
  {h:'読谷山花織 展示即売会',when:'伝統工芸総合センター',
-  items:['10月24日（土）10:00〜18:00','10月25日（日）10:00〜17:00']},
- {h:'残波灯台 無料参観',when:'残波岬',items:['10月24日（土）9:30〜16:30']},
+  items:['10月24日（土）10:00〜19:00','10月25日（日）10:00〜19:00']},
  {h:'第31回 読谷まつり少年野球大会',when:'9月26日（土）〜10月25日（日）',
   items:['10月25日（日）決勝戦 8:30試合開始予定（ゆんたんざソフトボール場）','12:30 まつりステージにて表彰式']},
- {h:'創作「進貢船」一般開放',when:'読谷村役場 北側駐車場',
+ {h:'創作「進貢船」一般開放',when:'まつり会場内',
   items:['10月24日（土）15:30〜18:00','10月25日（日）12:30〜15:00'],
   p:'本番で使う進貢船を間近で見ることができます。'}
 ];
@@ -624,32 +646,39 @@ var BUS={
 };
 function renderBus(k){
   var r=BUS[k]; if(!r) return;
+  var cols='style="grid-template-columns:repeat('+r.b.length+',1fr)"';
   var depTimes=r.s[0][2].filter(function(x){return x}).join(' / ');
-  var h='<p class="rdesc">'+esc(r.d)+'</p>'+
+  var head='<li class="shead"><div class="sname">停留所</div><div class="stimes" '+cols+'>'+
+    r.b.map(function(b){return '<span>'+esc(b)+'</span>'}).join('')+'</div></li>';
+  var rows=r.s.map(function(s,i){
+    var ud=s[1]?'<span class="ud">'+esc(s[1]==='継'?'経由':s[1])+'</span>':'';
+    var ends=(i===0||i===r.s.length-1)?' ends':'';
+    var times=s[2].map(function(t){
+      return t?'<span>'+esc(t)+'</span>':'<span><i>—</i></span>'}).join('');
+    return '<li class="st'+ends+'" data-n="'+esc(s[0])+'">'+
+      '<div class="sname">'+esc(s[0])+ud+'</div>'+
+      '<div class="stimes" '+cols+'>'+times+'</div></li>';
+  }).join('');
+  $('#busPanel').innerHTML=
+    '<p class="rdesc">'+esc(r.d)+'</p>'+
     '<p class="depline">会場（読谷村役場）発<b>'+esc(depTimes)+'</b></p>'+
-    '<details class="det"><summary>停留所ごとの時刻表をみる（'+r.s.length+'停留所）</summary>'+
-    '<p class="shint">横にスクロールすると、すべての便が見られます →</p>'+
-    '<div class="tscroll" tabindex="0" role="region" aria-label="'+esc(r.t)+'の時刻表">'+
-    '<table class="bus"><thead><tr><th>停留所</th>'+
-    r.b.map(function(b){return '<th>'+esc(b)+'</th>'}).join('')+
-    '</tr></thead><tbody>'+
-    r.s.map(function(s,i){
-      var ud=s[1]?'<span class="ud">'+esc(s[1]==='継'?'経由':s[1])+'</span>':'';
-      var ends=(i===0||i===r.s.length-1)?' class="ends"':'';
-      return '<tr'+ends+'><th scope="row">'+esc(s[0])+ud+'</th>'+
-        s[2].map(function(t){return t?'<td>'+esc(t)+'</td>':'<td class="x">—</td>'}).join('')+
-        '</tr>'}).join('')+
-    '</tbody></table></div></details>'+
+    '<details class="det"><summary>停留所ごとの時刻をみる（'+r.s.length+'停留所）</summary>'+
+    '<input class="bfind" type="search" inputmode="text" autocomplete="off" '+
+      'placeholder="停留所名でしぼりこむ" aria-label="停留所名でしぼりこむ">'+
+    '<ul class="stoplist">'+head+rows+'<li class="bempty" hidden>該当する停留所がありません</li></ul>'+
+    '</details>'+
     '<ul class="bnote">'+r.note.map(function(n){return '<li>'+esc(n)+'</li>'}).join('')+'</ul>';
-  $('#busPanel').innerHTML=h;
-  var d=$('#busPanel details'); if(d) d.addEventListener('toggle',fitHint);
 }
-function fitHint(){
-  var sc=$('#busPanel .tscroll'), hint=$('#busPanel .shint');
-  if(sc&&hint) hint.style.display = (sc.scrollWidth>sc.clientWidth+2) ? '' : 'none';
-}
-window.addEventListener('resize',fitHint);
 renderBus('n');
+document.addEventListener('input',function(e){
+  if(!e.target.classList||!e.target.classList.contains('bfind')) return;
+  var q=e.target.value.trim(), hit=0;
+  $$('#busPanel li.st').forEach(function(li){
+    var on=!q||li.dataset.n.indexOf(q)>=0;
+    li.hidden=!on; if(on)hit++;
+  });
+  $('#busPanel .bempty').hidden=!!hit;
+});
 
 
 document.addEventListener('click',function(e){
