@@ -149,17 +149,9 @@ html{scroll-behavior:smooth}
 .news .t{font-size:.93rem;font-weight:500;flex:1 1 100%;line-height:1.7}
 @media(min-width:560px){.news .t{flex:1 1 auto}}
 
-/* ===== 目次ナビ ===== */
-.nav{position:sticky;top:calc(var(--hdh) + env(safe-area-inset-top,0px));z-index:50;
-  background:rgba(251,249,252,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;gap:6px;overflow-x:auto;padding-block:9px;scrollbar-width:thin}
-.nav a{flex:none;min-height:40px;display:inline-flex;align-items:center;padding:0 14px;
-  border-radius:999px;border:1px solid var(--line-2);background:var(--surf);
-  color:var(--ink);text-decoration:none;font-size:.84rem;font-weight:700;white-space:nowrap}
-.nav a:hover{border-color:var(--plum-500);color:var(--plum-700)}
-
 /* ===== セクション ===== */
-section[id]{scroll-margin-top:calc(var(--hdh) + 60px)}
+section[id]{scroll-margin-top:calc(var(--hdh) + 16px)}
+#indexTop{scroll-margin-top:calc(var(--hdh) + 16px)}
 .sechead{display:flex;align-items:baseline;gap:12px;margin-block:38px 15px}
 .sechead h2{font-size:1.3rem}
 .sechead .en{font-size:.66rem;letter-spacing:.2em;color:var(--ink-3);font-weight:700}
@@ -294,7 +286,7 @@ ul.plots li span{display:block;font-size:.8rem;color:var(--ink-3);margin-top:2px
   text-decoration:none;font-size:.8rem;font-weight:700}
 
 /* ===== グリッド目次 ===== */
-.gidx{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:20px}
+.gidx{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-block:20px 4px}
 .gidx a{display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:62px;
   padding:9px 10px;border-radius:12px;border:1px solid var(--line);background:var(--surf);
   text-decoration:none;box-shadow:var(--shadow)}
@@ -481,18 +473,6 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
     <a href="#info"><b>お願い</b><span>ごみ・荒天時</span></a>
   </nav>
 </div>
-
-<nav class="nav" aria-label="目次"><div class="wrap nav-in">
-  <a href="#outline">開催概要</a>
-  <a href="#program">プログラム</a>
-  <a href="#access">交通・駐車場</a>
-  <a href="#map">会場マップ</a>
-  <a href="#events">展示・イベント</a>
-  <a href="#peace">ピースコンサート</a>
-  <a href="#live">ライブ配信</a>
-  <a href="#ushi">闘牛大会</a>
-  <a href="#info">お願い</a>
-</div></nav>
 
 <main class="wrap">
 
