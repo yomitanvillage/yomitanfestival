@@ -266,6 +266,13 @@ ul.fare li b{font-family:var(--ff-m);font-size:1rem;color:var(--ink);white-space
 .bnote li::before{content:"※ "}
 .busmemo{margin-top:13px;font-size:.8rem;color:var(--ink-2);line-height:1.8}
 
+ul.plots{list-style:none;margin:9px 0 0;padding:0;font-size:.88rem;color:var(--ink-2)}
+ul.plots li{display:grid;grid-template-columns:1.6em 1fr;gap:6px;align-items:baseline;
+  padding:7px 0;border-bottom:1px dashed var(--line);line-height:1.6}
+ul.plots li:last-child{border-bottom:0}
+ul.plots li b{font-family:var(--ff-m);font-size:1.05rem;color:var(--plum-700)}
+ul.plots li span{display:block;font-size:.8rem;color:var(--ink-3);margin-top:2px}
+
 .mapwrap{margin:14px 0 0}
 .mapbox{position:relative;padding-top:75%;border-radius:12px;overflow:hidden;
   border:1px solid var(--line);background:var(--plum-50)}
@@ -273,6 +280,47 @@ ul.fare li b{font-family:var(--ff-m);font-size:1rem;color:var(--ink);white-space
 .mapwrap figcaption{margin-top:7px;font-size:.8rem;color:var(--ink-2);line-height:1.8}
 .mapwrap figcaption a{margin-left:8px;white-space:nowrap}
 @media(min-width:620px){.mapbox{padding-top:56.25%}}
+
+.mapfig{margin:0;background:var(--surf);border:1px solid var(--line);border-radius:16px;
+  overflow:hidden;box-shadow:var(--shadow)}
+.mapfig img{display:block;width:100%;height:auto;background:#fff}
+.mapfig figcaption{padding:11px 14px;font-size:.82rem;color:var(--ink-2);
+  border-top:1px solid var(--line);line-height:1.8}
+.legend{background:var(--surf);border:1px solid var(--line);border-radius:16px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.legend h4{margin:16px 0 0;font-family:var(--ff-g);font-size:.76rem;font-weight:800;
+  letter-spacing:.14em;color:var(--plum-600)}
+.legend h4:first-child{margin-top:0}
+ul.lg{list-style:none;margin:7px 0 0;padding:0;
+  display:grid;grid-template-columns:1fr;gap:3px;font-size:.86rem;color:var(--ink-2)}
+ul.lg li{display:flex;gap:10px;align-items:center;min-height:32px;line-height:1.6}
+ul.lg li span{flex:1;min-width:0}
+ul.lg li b{color:var(--ink)}
+.sw{flex:none;display:inline-block;width:1.5em;height:1.1em;border-radius:3px;
+  border:1px solid rgba(27,18,35,.22);font-style:normal}
+.sw.ico{width:1.9em;height:1.9em;border:0;border-radius:0;object-fit:contain}
+.sw.bo{width:3em;height:1.5em;border:1px solid #9B85C4;background:#E9DDF7;color:#41205F;
+  font-family:var(--ff-g);font-weight:700;font-size:.62rem;line-height:1.5em;text-align:center;
+  border-radius:3px;white-space:nowrap}
+.sw.stop{width:1.3em;height:1.3em;border-radius:50%;background:#C92A2A;border-color:#8E1D1D}
+.sw.arw{width:1.9em;height:1.3em;border:0;background:none;color:#F08000;font-weight:900;
+  font-size:1.1rem;line-height:1.2em;text-align:center}
+.sw.dash{background:#fff;border:2px dashed #1B1223;border-radius:4px}
+.sw.hatch{background:repeating-linear-gradient(45deg,#D9D9D9 0 4px,#F2F2F2 4px 8px);
+  border-color:#BDBDBD}
+@media(min-width:560px){ul.lg{grid-template-columns:1fr 1fr;gap:3px 18px}}
+ul.tents{list-style:none;margin:8px 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:7px}
+ul.tents li{display:grid;grid-template-columns:2.4em 1fr;gap:8px;align-items:baseline;
+  background:var(--surf);border:1px solid var(--line);border-radius:10px;
+  padding:9px 11px;font-size:.86rem}
+ul.tents li b{font-family:var(--ff-m);font-weight:800;font-size:.98rem;color:var(--plum-700);
+  text-align:center;border-radius:5px}
+.tcat{margin-top:18px}
+.tcat h4{display:flex;align-items:center;gap:8px;margin:0;
+  font-family:var(--ff-g);font-size:.9rem;font-weight:800;color:var(--ink)}
+.tcat h4 i{display:inline-block;width:1.1em;height:1.1em;border-radius:3px;
+  border:1px solid rgba(27,18,35,.22)}
 
 .subh{margin-top:30px;font-size:1.08rem}
 .ytbtn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;
@@ -369,6 +417,7 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
 
 <nav class="nav" aria-label="目次"><div class="wrap nav-in">
   <a href="#outline">開催概要</a>
+  <a href="#map">会場マップ</a>
   <a href="#program">プログラム</a>
   <a href="#peace">ピースコンサート</a>
   <a href="#live">ライブ配信</a>
@@ -383,6 +432,53 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
 <section id="outline">
   <div class="sechead"><h2>開催概要</h2><span class="en">OVERVIEW</span><i class="rule"></i></div>
   <div class="card"><dl class="spec" id="spec"></dl></div>
+</section>
+
+<section id="map">
+  <div class="sechead"><h2>会場マップ</h2><span class="en">VENUE MAP</span><i class="rule"></i></div>
+  <p class="lede">第52回は会場のレイアウトが大きく変わります。番号はテントの区画です。</p>
+  <figure class="mapfig">
+    <img src="img/map.svg" width="990" height="1007" loading="lazy"
+         alt="第52回読谷まつりの会場マップ。読谷村運動広場のメインステージとテント1〜34、多目的広場のテント35〜50、一般駐車場①〜⑤、トイレ、ごみステーション、喫煙所の位置を示しています。">
+    <figcaption><a href="img/map.svg" target="_blank" rel="noopener">大きな画面で見る ↗</a>　拡大すると番号まで読めます。</figcaption>
+  </figure>
+
+  <h3 class="subh">このマークの意味</h3>
+  <div class="legend">
+    <h4>施設</h4>
+    <ul class="lg">
+      <li><img class="sw ico" src="data:image/png;base64,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" alt=""><span>トイレ</span></li>
+      <li><img class="sw ico" src="data:image/png;base64,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" alt=""><span>一般駐車場①〜⑤（無料）</span></li>
+      <li><img class="sw ico" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAOr0lEQVR42u1cf4wc5Xl+3m9m9tf5zvad4fhhzjjGiTE4tgHzwwSSVBCchJDUgdgQIbVISYoEJGClVdsoP5RIjdIkpJEIbSIltBCg0ISmElS0Ja5pLNEEx05sCLgY22Bj+37t3u7tzM7M971v//hmb/fudu+O3bUPoow02tPpm5md53ve533fZ74dBx3bCCCyn2/6UAVyPCy/5f5bV/7ZP2/vf++dt2ZOXz6q/fxrUf5INDGMFEg5AASnaqPOnUbq7teZ+J8IAyIzYONCWOOMP/rsuhW3fWd3PMYaSrlOCtChicoH//dHo7sf/4f8np/tDYcP6npQIfx2AchuTjoHE/oNrkIgsjMvzJMZQAQC4YK/3vtvC85d9UEdCDuekxItzMLazTop5QFRMRgtvfTM3w3/6uF/LOz999dMUBAQzQj+WwAge7hK57DqjqfvT/cvvywujhwMRw7+2j+ye2f54C9fKL/+65F47DhPZo0zcbywRte5l3Zd+JfPFVkLK0e5cbl0zHHT3d6i1AITAlyJfVJuxsmRAgGV4aO7Dv34rhvye376BpGyLH0rAlQNj75Ltg6s+twjh+NxQLkAOUkEaCAaG3vdP7LnieLLz/xL8aVn9pQP7yqxDut0CxjY/M0bln7knp9F4yYiExb3ff3SpaJD7rvslisWr7vxswuWrdlMHmDGhVlM5OXcTDRWOvbbL523NC4NsY1meQsyKNGBVZ/bfu/iNVffocsmIsdJMQuDhAnKVa5ylQeQC3AIBMcPbC/uf+aHhb1P/ldx/44TJhiTtV89tDOzZOBylSY18vxTX9n/vQ9/uRaBDrpXvmdR36W3XL9kwye/RV5uCWsbevu+ftXC8QO/KJJyIGzeYgCRA4hB7qw1mQu/sHsMolwQqWnj2GoJSFjBSakUKZWyEx4cf2N35diL/9mz6po/F2HtZpX7u299+PTCC08NKS8LEQPRE0kMKz/9k88vuWLzN4wvrMPSsb1ffudAXDzBJ1OL3JbxIYIIsGTjbZvcLicVlXRFkZuZNlCRUnBSE3jFrHXEmqDcdN9Z67P9Z603vjARKePHvpPrySovC46DSSWActOUO+fij3FF2MmSGt3zH/fGxRN8MtkDAKpFdCCs4WQXUd/FW74U+7pCIDVX4VLKzZBSrsSs47KJoEiBSEF5uZWfeeTwu7/4wo5ln/j2Rxe84/IFgEB0iAUrrlySW7psI0e6AgJGfvXIIychEXeGQUQORDQWrr7unNzAmes4BDgCTGwiAFCqSbg1AsuZEpEV4XT/8qvPPufuq8+45m6UD+16aGjnA3/bs+raj8AIq5SbCU4Mvljc//NjIAURc1IBonYOdbI91L1i45K+S2/evOiCD21L9/WtFAZMBWDWFUXKBak3PwnCmoW1gpNSWVKkkgmIdCXV42aOPnnflsOP3fFYfclwssLMaedg0SEqg6/4+d1P7Bp+7oH7/CMvPUxOV5DuXbrW6/ZyIFISC7OYkIQUiGiOFFVEygURsWZtIhMRkyJSjjDEWbB4sZPpPhDlXzum/TxDxBacyul4F9J2oUhKTZvB7Bnnp3sv+viG3otvvKtrYO1NygNMCJjoTYZgw1kBlAeoNBDmS8cKv/npFwef/cFjpQM7i/WF6LSKfd5bjaSdsL0XT2Sg7vPes7Bvw5ZNi9fcsC3Tv3QDCOAKYIyuQEgpp5bh5ryxMMNEjuNmnKwNv7GXt997Yvv3vp3f88SR6mR1IsOdnBSQJCXhWm/pZHto0errzu7dcPMne86/9u70wgX9bGzx2LJeiTAza0XKdXKWkeMHf/P48Z9/9wvDz/14v5iw5jC02I6c3BzZJATTvcvcxes+ekHvxVtu716x8TNVFnDEmllYkXKh3lwIsrHh62adlHKB8YP7/vWNp7+xbfi5B19th00nGaCpIagAkUnNZdfARbnei2+6avH6j2/Lnb3yWnKSEIxb1CuxILsZJ0UuUPzd/9x36NF7/qL82vPltyCDZglBMRMtgnLT6HnX+5f0XXrz5oWrP7QtfdqSd4KtuLNpIQQToLwuJ6UrYfHwo3dvHHz2/hfeHgDNolde92lq0ZrrV/Rt2Pqn3Svfd6fXnVrAsS0iGSZScFJzDUE2uuJm3ExYGD2w+/N95739AJq1ZFiVWrx+8yV9F910V9eydVtUCjARYMK5hSAbE3lZ5R7f8cCnDj542w/fxgDNVjIQuldc2dO3YeumRe++4Z5s/zmXgWwWnNCrRiUDC6sUqZe+e31/Yd+Tg78fAM1WMmS6aeHq687u3bB168LzP3BPelH3mWISvaovGViYUqQqQ0d37fvq+RtMpSS/fwDNEoKp3gG3d+0Nq3s3bL29+9yNn3a6SNm+jbWY2E/1eLkT//3wnQceuPXv3z5ZrFMlwxSwus5Zn+295Karetdtvju79F2biADygJe+s2VgdNfjr5+6x0Wk5m2nSbsDUi7ITdU9CACUl8WiCz942orbHrp97dcO7fR6zlD4w9bEEfSybQVKS4ZZuneZC+XQDD2SkOMSKVd10iwmJzVHy4RAShEA+G/s89sJrZagXfu1QzvTvWetk1i4cQ0iLOSklOOkOvnQipw3b5H89isXZIJjL4atPoltiUESBQWV8nI8A8SUeDct+z4NuwfbwWPWp4V2jIkqBVMp6nau2RJA2s8fBQsLs6ZWLNXWs5eaAHwm4NmyjaMgz6HPE07bqQOocBxOXTqZnoUT9sxNgaqPteb6eGvi9M3GkzAUKY6DAseBnHIGGX/0GBEgLEwNXO1KDChl7yI1i01MAEINOASYZPxs4MRsP40AnkompBHo4fjQxGPuFmFSrTFodKjhyQjwY+CPVwP/dCOw5gwg0Pb/zcYHGlh/JvDQJ+xxftx8fBWc07qAB28C/up9QMTTAZJksI7Gh61wUcsItQhQfqQp9QW45jzgwn7g6uVARTee4eosVzRwxQCw6jTgA+fNHGIqGX9hP3D+6cD7lwM5D2CZlkOZFGAqxaFazJ9KBpVH8w0nhOyXzQf2M62as6Ee1MjY8aGe/V5EgLRrx48GgOEGiZSEQQAHFiA61QAZf7QoAqgGppUACJIw6UrPrdAisuNnvQ+y5895NTbF3FyDdGVspN2Ws8UQK5SbhrQA5dj+mUvVZbQObjnPfgZxEwZV2ewXhttuVVpiUFCosAYaecQCoJysWOlybXbqKD4CdNUBxDOcXAdjhXkCaCxkbSI0obZfxyBHdRYgSc4L2OswNw8gExTG5gegsKTFVAo2fKaX/FUGZb2EQR1ESJE97wRAzSRGAOMXSvMCEIfjLFFQmFZeSK0WAoCsC3idXE+QVNtddQA1HkfKrjIZK7dVJbYOkM8c+qONCjRKtKHKIM9J2ogOhZeqE2k/anzvSlmAdDAWzE+IxQF0OD4EldQcDappwNYrKadzISawLUymjkFCTRhkAK6UonkBCMLgcHyYCOApGkRJ+wAAGbdW1HWKQo6qY1Dc5LSqGmKlOPHvTjFAAExlbBBqMsWl2g4k6Tft2L1TGsSwzWl2KkCTdDCpouOwaKKymR8GWYCGGlawsBVuaCybsp7tutslUBUIT1lmVuugad8hEXLrBZXb8oLaAkgHY8OgKRqUZLHIWBZVM1mnNIjFin4VID9xCqTBXUkU5Dn2ed4YxH5htFmhGGq7VzNZRwBKgEg7VtcmGNSgUSUCdDg+JG16QW0yKD869cJVly/mmlB3pWrpv22NFiDl1ky1Rt2/VBkUjg8Lm7abwdY1yC8Um2mF5sm1UCeyGCUhlk6Kz5it1k0NMWFhstX+cLudfJsMKpQaTQwRoE0NoK45LNEUzO1WJNG0qocUNnMrVZJl2/SC2mNQUPBFbFE2daaN1IrFrlk0iAiIknD03JkNNpZakRjGFqRpEVTVoGBsfhlkgmIoZrppVg2FCU/I60wGq9q52USgKzoBqMlg4xdGOtIct14HFSNp5Akltqsf1UJMdWgNCUsN8IoGYtMkzVtLJj/PAJW0iRNPqJHlUe8qtplq69N8di5uoi1ki/MKEIdlIzrIN8qiIjVPKOclP0zsULtRNcsCbbNlMy9IN8mypw6g2BeJg/xsrmJXYpp1qp2f5Ec3amGqXlBQGJ9ngALRlfFBamB5EGoalPOATi6Cqe/km/pMAphK1QuS+QFIjIYJS4PNRKCqQRmvg64iTQbINChAFSmXDWA64AW1DlCS2TkoDpICmGsMkqrtGtWaVVfZDERthhdhsmGPZl6Q6YwX1DJA1epUV8YGm2lQUMegVAdEuuo1TbJbpzdrDAIkjn0Ox/U8ahBVO/rBaZZHciN+8vWq3Xcn+jFHAbmk6ipHDXQt8YKMDvIc+TyvGpQ0rCPUBL5KbL9axrMAtSvSIjYbTnITm/RhEvkjJirzPGrQhOUxAmocCqG2IBGswTWTBklSJc8EoiQMyri1Xq+ZF2TC8SGOw04QqD0GaT9faNaAVrQV56puNHtELADcZPHCTEwT2PMtzlomTSyrkQZ9WFgexcRPF9pDyG1ZMW1HX2pURXsKGPGBn7wALF0IHBi1My8NxmZd4BeHgcsHgCdfnmEmE+F/bB+wph/Y/Uad11StzVjYIYArpaGJbNvmItu2FmDqoDAuRniq5SEAXAf4mx2JjeFYlkiD5jPtAK+MAJ96olYINmJbdV3Q939Zs17dRtmRagunqq/PmAeA7FV1edQXIUUN1glRXdUrgplWyyDl1vSEZ7mhqgHX8Jxk3zpjyqPHO+EFtaxB1eY9OLp3LCoWj9rXirFuZE+wzK4CIrWxc7E8mp2TWJgUqeIrO7Z3qPtr9cmqgJQDXR6RwR333eb1KFeMiSCsIcInZeeZd9Gx7/V4ufLhV3eMPP/ofhB15L0erb+aQqwIll559kBq4apiz8o11yc/xyFSJ2F3ZthdIifneMHRV3f83/0f2xQVjmhQZzrkDjxrsF+i/723X7Bk459sS/e+40ohxxMdB0p17mcIJo7KU1MSwbYWulI4Wnzx6R8de/qbT8WlE9zJN+T9P4B29neWRAQuAAAAAElFTkSuQmCC" alt=""><span>ごみステーション</span></li>
+      <li><img class="sw ico" src="data:image/png;base64,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" alt=""><span>喫煙所</span></li>
+      <li><i class="sw bo">本部</i><span><b>本部</b>　迷子・落とし物・お問い合わせ</span></li>
+    </ul>
+    <h4>テントの色</h4>
+    <ul class="lg">
+      <li><i class="sw" style="background:#FF8000"></i><span>飲食</span></li>
+      <li><i class="sw" style="background:#51C0FF"></i><span>物品</span></li>
+      <li><i class="sw" style="background:#FFCC00"></i><span>キッチンカー</span></li>
+      <li><i class="sw" style="background:#FF669D"></i><span>工芸</span></li>
+      <li><i class="sw" style="background:#40B000"></i><span>園芸販売</span></li>
+      <li><i class="sw" style="background:#D47EFF"></i><span>案内・サービス</span></li>
+    </ul>
+    <h4>区域・通行</h4>
+    <ul class="lg">
+      <li><i class="sw dash"></i><span><b>黒い破線の区域</b>　一般の方は駐車できません</span></li>
+      <li><i class="sw stop"></i><span>車両進入禁止</span></li>
+      <li><i class="sw arw">→</i><span>一方通行・進行方向</span></li>
+      <li><i class="sw hatch"></i><span><b>区域内進入禁止</b>　工事中および花火打ち上げ準備のため</span></li>
+    </ul>
+  </div>
+  <div class="note">救護所・AED・授乳／おむつ替えの場所は調整中です。決まりしだい、このページに掲載します。</div>
+  <div id="tentWrap" hidden>
+    <h3 class="subh">出店一覧</h3>
+    <p class="lede">番号は会場マップの区画番号です。出店内容は当日のお楽しみ。</p>
+    <input class="bfind" id="tentFind" type="search" inputmode="text" autocomplete="off"
+      placeholder="出店名・カテゴリーでしぼりこむ" aria-label="出店名・カテゴリーでしぼりこむ">
+    <div id="tentList"></div>
+    <p class="bempty" id="tentEmpty" hidden>該当する出店がありません</p>
+  </div>
 </section>
 
 <section id="program">
@@ -503,14 +599,18 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
   </div>
   <div class="box">
     <h3>駐車場</h3>
-    <p>一般駐車場は3か所あります（いずれも無料）。</p>
-    <ul>
-      <li>会場の東側（オキハム平和の森球場・読谷村陸上競技場の東側）</li>
-      <li>読谷中学校の南側</li>
-      <li>JAおきなわ読谷集選果場の前</li>
+    <p>一般駐車場は5か所あります（いずれも無料）。番号は会場マップと同じです。<br>
+    <b>利用できる日：10月23日（金）・24日（土）・25日（日）</b></p>
+    <ul class="plots">
+      <li><b>①</b><div>読谷中学校の南側<span>入口は東側、出口は西側</span></div></li>
+      <li><b>②</b><div>読谷村健康増進センター・ユンタンザパークゴルフ場の東側</div></li>
+      <li><b>③</b><div>オキハム読谷平和の森球場の東側</div></li>
+      <li><b>④</b><div>読谷村陸上競技場の東側</div></li>
+      <li><b>⑤</b><div>JAおきなわ読谷集選果場の前</div></li>
     </ul>
     <div class="note warn" style="margin-top:14px">
-      <p><b>ゆんラボ・未来館はまつりの駐車場ではありません。</b></p>
+      <p><b>ゆんラボ・未来館の駐車場は利用できません。</b></p>
+      <p style="margin-top:6px">会場マップで黒い破線で囲まれた場所は、出演者・出店者用などのため、一般の方は駐車できません。</p>
     </div>
     <figure class="mapwrap" id="parkMap" hidden>
       <div class="mapbox"><iframe id="parkMapFrame" loading="lazy" allowfullscreen
@@ -573,13 +673,13 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
    d=日付 / tag=ラベル / pri:1 でラベルが濃い紫（緊急告知用） / t=本文
    ============================================================ */
 var NEWS=[
+ {d:'2026.10.15',tag:'重要',pri:1,t:'会場マップを公開しました。第52回は会場レイアウトが大きく変わります。出店一覧（59店）とマークの意味もあわせてご覧ください。'},
  {d:'2026.10.15',tag:'重要',pri:1,t:'10月18日（日）の闘牛大会は、うるま市石川多目的ドームに駐車できません。臨時駐車場と無料シャトルバスの案内を「闘牛大会」に掲載しました。'},
  {d:'2026.10.15',tag:'お知らせ',t:'ライブ配信とオンライン会場の案内を掲載しました。配信URLは決まりしだいお知らせします。'},
  {d:'2026.10.07',tag:'更新',t:'駐車場の案内と、農産物ブース・黒糖づくり体験を追加しました。'},
  {d:'2026.10.06',tag:'更新',t:'鳳バス臨時便の運賃を掲載しました。創作「進貢船」一般開放の場所、ジュニアフェスティバル・読谷山花織展示即売会の時間、ピースコンサートの出演者表記を更新しました。'},
  {d:'2026.10.05',tag:'お知らせ',t:'鳳バス臨時便（北・南・西ルート）の時刻表を「交通」に掲載しました。'},
  {d:'2026.10.05',tag:'お知らせ',t:'プログラム、ピースコンサートの出演アーティスト、展示・イベントの情報を公開しました。'},
- {d:'2026.10.01',tag:'重要',pri:1,t:'第52回は会場レイアウトが大きく変わります。会場マップは決まりしだいこのサイトで公開します。'},
  {d:'2026.10.01',tag:'お知らせ',t:'第52回読谷まつりの特設サイトを公開しました。'}
 ];
 
@@ -742,6 +842,67 @@ function renderProg(day){
       detHTML(p.det)+'</div></li>'}).join('');
 }
 renderProg('24');
+
+/* ============================================================
+   出店一覧
+   CAT  … カテゴリー（色は会場マップのテントの色と合わせています）
+   TENTS … [番号, 出店名, カテゴリーのキー]
+            出店名が1件も入っていないあいだは、一覧ごと表示されません
+   ============================================================ */
+var CAT={
+ food:{n:'飲食',c:'#FF8000'},
+ goods:{n:'物品',c:'#51C0FF'},
+ car:{n:'キッチンカー',c:'#FFCC00'},
+ craft:{n:'工芸',c:'#FF669D'},
+ plant:{n:'園芸販売',c:'#40B000'},
+ info:{n:'案内・サービス',c:'#D47EFF'}
+};
+var TENTS=[
+ ["1","ゴミ０大作戦","info"],["2","ゆんラボ・未来館","info"],["3","観光協会","info"],["4","案内所","info"],
+ ["5","ガレージカーティス","food"],["6","海の家がんじゅう","food"],["7","沖縄ハム総合食品","food"],["8","GOZZA","food"],
+ ["9","MILK BOMB","food"],["10","Cookie mania","food"],["11","知名商店","goods"],
+ ["12","知花商事","goods"],["13","砂川組","goods"],["14","まつだ商店","food"],["15","リーグ企画","food"],
+ ["16","ちゃかし家","food"],["17","いちゃりばカンパニー","food"],["18","御菓子御殿","food"],["19","ESサービス","food"],
+ ["20","読谷いしじトリィ","food"],["21","江田フードサービス","car"],["22","夜のくれーぷ","car"],
+ ["23","song bird café","car"],["24","DAULAKO","car"],["25","比嘉酒造","food"],
+ ["26","花織事業協同組合","craft"],["27","丸吉工芸","plant"],["28","商工会青年部","food"],["29","Kマリン","goods"],
+ ["30","FREDDOICE GOOD IDEAS","food"],["31","Good FELLOWS","car"],["32","オーシャンズピザ","car"],
+ ["33","LERIA","car"],["34","アメ横マーケット","goods"],["35","サンクプラス","car"],["36","369KITCHEN","car"],
+ ["37","YES SIR　KEBAB&HOT DOG","car"],["38","パナマ原人","car"],["39","BAY","car"],
+ ["40","TAKETAKEキッチンカー","car"],["41","比嘉商事","goods"],["42","丸昌","goods"],["43","登川工業","food"],
+ ["44","egg like","food"],["45","sangokushi","food"],["46","カデナBAR","food"],
+ ["47","サウンドプロジェクト","food"],["48","牛若丸","food"],["49","直めだか","goods"],["50","南風バル酒場","food"],
+ ["Y1","読谷手をつなぐ育成会","food"],["Y2","読谷村母子寡婦福祉会","food"],["Y3","読谷村民生委員児童委員協議会連合会","food"],
+ ["Y4","よみたん救護園","food"],["Y5","海邦福祉会","food"],["Y6","蟹江町観光協会","food"],["Y7","読谷村漁港協同組合","food"],
+ ["JA","JAおきなわゆんた支店","goods"],["JA","中部地区和牛改良組合読谷村支部","food"]
+];
+
+function renderTents(){
+  if(!TENTS.length) return;
+  var order=['food','goods','car','craft','plant','info'];
+  var by={}; TENTS.forEach(function(t){(by[t[2]]=by[t[2]]||[]).push(t)});
+  $('#tentList').innerHTML=order.filter(function(k){return by[k]&&by[k].length}).map(function(k){
+    return '<div class="tcat"><h4><i style="background:'+CAT[k].c+'"></i>'+esc(CAT[k].n)+
+      '<span style="font-weight:400;font-size:.8rem;color:var(--ink-3)">'+by[k].length+'店</span></h4>'+
+      '<ul class="tents">'+by[k].map(function(t){
+        return '<li data-q="'+esc(t[0]+' '+t[1]+' '+CAT[k].n)+'">'+
+               '<b style="background:'+CAT[k].c+'22">'+esc(t[0])+'</b>'+esc(t[1])+'</li>'}).join('')+
+      '</ul></div>';
+  }).join('');
+  $('#tentWrap').hidden=false;
+}
+renderTents();
+document.addEventListener('input',function(e){
+  if(e.target.id!=='tentFind') return;
+  var q=e.target.value.trim(), hit=0;
+  $$('#tentList li').forEach(function(li){
+    var on=!q||li.dataset.q.indexOf(q)>=0; li.hidden=!on; if(on)hit++;
+  });
+  $$('#tentList .tcat').forEach(function(d){
+    d.hidden=!d.querySelector('li:not([hidden])');
+  });
+  $('#tentEmpty').hidden=!!hit;
+});
 
 /* ---------- 鳳バス 臨時便 ---------- */
 var BUS={
