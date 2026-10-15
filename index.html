@@ -50,7 +50,7 @@ img{max-width:100%}
      空のままなら地図は表示されず、通信も発生しません。
      ============================================================ -->
 <script>
-  var MAP_EMBED = 'https://www.google.com/maps/d/u/0/embed?mid=1co3m71csoFbaT5rDTrXy3QGtefYiKPI&ehbc=2E312F'; // 例: 'https://www.google.com/maps/d/embed?mid=XXXXXXXX'
+  var MAP_EMBED = 'https://www.google.com/maps/d/embed?mid=1co3m71csoFbaT5rDTrXy3QGtefYiKPI&ehbc=2E312F';
 </script>
 
 <!-- ============================================================
@@ -806,11 +806,13 @@ document.addEventListener('click',function(e){
 var MAP_ON=false;
 (function(){
   if(typeof MAP_EMBED!=='string' || !MAP_EMBED) return;
-  if(!/^https:\/\/www\.google\.com\/maps\/(d\/)?embed/.test(MAP_EMBED)) return;
+  /* 「地図を埋め込む」のURLは /maps/d/u/0/embed? の形で出ることがあるので正規化 */
+  var u=MAP_EMBED.replace(/\/maps\/d\/u\/\d+\//,'/maps/d/');
+  if(!/^https:\/\/www\.google\.com\/maps\/(d\/)?embed\?/.test(u)) return;
   var f=$('#parkMapFrame'); if(!f) return;
-  f.src=MAP_EMBED;
+  f.src=u;
   var a=$('#parkMapLink');
-  if(a) a.href=MAP_EMBED.replace('/maps/d/embed','/maps/d/viewer').replace('/maps/embed','/maps');
+  if(a) a.href=u.replace('/maps/d/embed','/maps/d/viewer').replace('/maps/embed','/maps');
   $('#parkMap').hidden=false; MAP_ON=true;
 })();
 
