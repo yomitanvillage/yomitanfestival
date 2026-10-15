@@ -5,15 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="第52回読谷まつり公式サイト。2026年10月24日（土）・25日（日）読谷村運動広場で開催。10月23日（金）はピースコンサート。">
 <meta name="theme-color" content="#41205F">
-<link rel="canonical" href="https://example.jp/">
+<link rel="canonical" href="https://yomitanvillage.github.io/yomitanfestival/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="第52回 読谷まつり">
 <meta property="og:title" content="第52回 読谷まつり｜2026年10月24日・25日">
 <meta property="og:description" content="読谷村運動広場で開催。10月23日（金）はピースコンサート。">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:url" content="https://example.jp/">
+<meta property="og:url" content="https://yomitanvillage.github.io/yomitanfestival/">
 <meta name="twitter:card" content="summary_large_image">
-<!-- <meta property="og:image" content="https://example.jp/img/og-image.jpg"> -->
+<meta property="og:image" content="https://yomitanvillage.github.io/yomitanfestival/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="第52回 読谷まつり　2026年10月24日・25日　読谷村運動広場">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2341205F%27/%3E%3Cg fill=%27%23E3B63C%27%3E%3Crect x=%279%27 y=%274%27 width=%274%27 height=%274%27/%3E%3Crect x=%2719%27 y=%274%27 width=%274%27 height=%274%27/%3E%3Crect x=%274%27 y=%279%27 width=%274%27 height=%274%27/%3E%3Crect x=%2724%27 y=%279%27 width=%274%27 height=%274%27/%3E%3Crect x=%274%27 y=%2719%27 width=%274%27 height=%274%27/%3E%3Crect x=%2724%27 y=%2719%27 width=%274%27 height=%274%27/%3E%3Crect x=%279%27 y=%2724%27 width=%274%27 height=%274%27/%3E%3Crect x=%2719%27 y=%2724%27 width=%274%27 height=%274%27/%3E%3C/g%3E%3Crect x=%2714%27 y=%2714%27 width=%274%27 height=%274%27 fill=%27%23F0F0F0%27/%3E%3C/svg%3E">
 <style>
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -45,12 +48,13 @@ img{max-width:100%}
 
 <!-- ============================================================
      駐車場の地図（Googleマイマップ）
-     MAP_EMBED に、マイマップの「地図を埋め込む」で表示される
+     それぞれ、マイマップの「地図を埋め込む」で表示される
      <iframe src="..."> の URL だけを貼り付けてください。
      空のままなら地図は表示されず、通信も発生しません。
      ============================================================ -->
 <script>
-  var MAP_EMBED = 'https://www.google.com/maps/d/embed?mid=1co3m71csoFbaT5rDTrXy3QGtefYiKPI&ehbc=2E312F';
+  var MAP_EMBED      = 'https://www.google.com/maps/d/embed?mid=1co3m71csoFbaT5rDTrXy3QGtefYiKPI&ehbc=2E312F'; // まつり本番の駐車場
+  var MAP_EMBED_USHI = 'https://www.google.com/maps/d/embed?mid=1p3a_YUKeCy6UkbfRP0Tvoqk8MBQinKI&ehbc=2E312F'; // 闘牛大会の臨時駐車場
 </script>
 
 <!-- ============================================================
@@ -464,8 +468,12 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
       <li>臨時駐車場 ⇔ 闘牛大会会場 を無料シャトルバスで送迎します</li>
       <li>シャトルバス運行　10月18日（日）10:00〜16:00</li>
     </ul>
-    <p style="margin-top:12px"><a class="ytbtn" href="https://www.google.com/maps/dir/?api=1&destination=26.426175%2C127.830369&travelmode=driving" target="_blank" rel="noopener">臨時駐車場までの道順 ↗</a></p>
-    <p style="margin-top:10px"><a href="https://www.google.com/maps/search/?api=1&query=26.426175%2C127.830369" target="_blank" rel="noopener">臨時駐車場の場所だけを見る ↗</a></p>
+    <figure class="mapwrap" id="ushiMap" hidden>
+      <div class="mapbox"><iframe id="ushiMapFrame" loading="lazy" allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade" title="闘牛大会の臨時駐車場（Googleマイマップ）"></iframe></div>
+      <figcaption>ピンをタップすると場所の名前が出ます。<a id="ushiMapLink" href="#" target="_blank" rel="noopener">大きな地図で開く ↗</a></figcaption>
+    </figure>
+    <p style="margin-top:14px"><a class="ytbtn" href="https://www.google.com/maps/dir/?api=1&destination=26.426175%2C127.830369&travelmode=driving" target="_blank" rel="noopener">臨時駐車場までの道順 ↗</a></p>
   </div>
 </section>
 
@@ -802,21 +810,23 @@ document.addEventListener('click',function(e){
   });
 })();
 
-/* ---------- 駐車場の地図（MAP_EMBEDを設定したときだけ表示） ---------- */
-var MAP_ON=false;
-(function(){
-  if(typeof MAP_EMBED!=='string' || !MAP_EMBED) return;
+/* ---------- マイマップの埋め込み（URLを設定したときだけ表示） ---------- */
+function setMap(url,wrapId,frameId,linkId){
+  if(typeof url!=='string' || !url) return false;
   /* 「地図を埋め込む」のURLは /maps/d/u/0/embed? の形で出ることがあるので正規化 */
-  var u=MAP_EMBED.replace(/\/maps\/d\/u\/\d+\//,'/maps/d/');
-  if(!/^https:\/\/www\.google\.com\/maps\/(d\/)?embed\?/.test(u)) return;
-  var f=$('#parkMapFrame'); if(!f) return;
+  var u=url.replace(/\/maps\/d\/u\/\d+\//,'/maps/d/');
+  if(!/^https:\/\/www\.google\.com\/maps\/(d\/)?embed\?/.test(u)) return false;
+  var f=$('#'+frameId), w=$('#'+wrapId); if(!f||!w) return false;
   f.src=u;
-  var a=$('#parkMapLink');
+  var a=$('#'+linkId);
   if(a) a.href=u.replace('/maps/d/embed','/maps/d/viewer').replace('/maps/embed','/maps');
-  $('#parkMap').hidden=false; MAP_ON=true;
-})();
+  w.hidden=false; return true;
+}
+var MAP_ON=false;
+if(setMap(typeof MAP_EMBED!=='undefined'?MAP_EMBED:'','parkMap','parkMapFrame','parkMapLink')) MAP_ON=true;
+if(setMap(typeof MAP_EMBED_USHI!=='undefined'?MAP_EMBED_USHI:'','ushiMap','ushiMapFrame','ushiMapLink')) MAP_ON=true;
 
-/* ---------- 外部送信の注記（GA_ID／MAP_EMBEDを設定したときだけ表示） ---------- */
+/* ---------- 外部送信の注記（GA_ID／地図を設定したときだけ表示） ---------- */
 if((typeof GA_ID==='string' && GA_ID) || MAP_ON){
   var gn=$('#gaNotice'); if(gn) gn.hidden=false;
   var gm=$('#gaMap'); if(gm && MAP_ON) gm.hidden=false;
