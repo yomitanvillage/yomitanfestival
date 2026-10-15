@@ -42,6 +42,26 @@ img{max-width:100%}
     gtag('config',GA_ID);
   })();
 </script>
+
+<!-- ============================================================
+     駐車場の地図（Googleマイマップ）
+     MAP_EMBED に、マイマップの「地図を埋め込む」で表示される
+     <iframe src="..."> の URL だけを貼り付けてください。
+     空のままなら地図は表示されず、通信も発生しません。
+     ============================================================ -->
+<script>
+  var MAP_EMBED = ''; // 例: 'https://www.google.com/maps/d/embed?mid=XXXXXXXX'
+</script>
+
+<!-- ============================================================
+     YouTubeライブ配信のURL
+     決まりしだい、それぞれに配信ページのURLを貼り付けてください。
+     空のままなら「決まりしだい掲載します」と表示されます。
+     ============================================================ -->
+<script>
+  var LIVE_URL_23   = ''; // 10/23 ピースコンサート（ピースコンサート実行委員会）
+  var LIVE_URL_2425 = ''; // 10/24・25 まつり本番（FMよみたん）
+</script>
 <title>第52回 読谷まつり</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -242,6 +262,22 @@ ul.fare li b{font-family:var(--ff-m);font-size:1rem;color:var(--ink);white-space
 .bnote li::before{content:"※ "}
 .busmemo{margin-top:13px;font-size:.8rem;color:var(--ink-2);line-height:1.8}
 
+.mapwrap{margin:14px 0 0}
+.mapbox{position:relative;padding-top:75%;border-radius:12px;overflow:hidden;
+  border:1px solid var(--line);background:var(--plum-50)}
+.mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapwrap figcaption{margin-top:7px;font-size:.8rem;color:var(--ink-2);line-height:1.8}
+.mapwrap figcaption a{margin-left:8px;white-space:nowrap}
+@media(min-width:620px){.mapbox{padding-top:56.25%}}
+
+.subh{margin-top:30px;font-size:1.08rem}
+.ytbtn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;
+  border-radius:999px;background:var(--plum-700);color:#fff;text-decoration:none;
+  font-family:var(--ff-g);font-weight:700;font-size:.92rem}
+.ytbtn:hover{background:var(--plum-600)}
+.pending{display:inline-block;font-size:.84rem;color:var(--ink-3)}
+p.liveurl{margin-top:11px}
+
 /* ===== アーティスト ===== */
 .acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-top:12px}
 .act{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:13px 14px;
@@ -331,6 +367,7 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
   <a href="#outline">開催概要</a>
   <a href="#program">プログラム</a>
   <a href="#peace">ピースコンサート</a>
+  <a href="#live">ライブ配信</a>
   <a href="#events">展示・イベント</a>
   <a href="#ushi">闘牛大会</a>
   <a href="#access">交通</a>
@@ -369,6 +406,40 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
   <div class="acts" id="acts"></div>
 </section>
 
+<section id="live">
+  <div class="sechead"><h2>ライブ配信</h2><span class="en">LIVE</span><i class="rule"></i></div>
+  <p class="lede">会場に来られない方も、ライブ配信でご覧いただけます。</p>
+  <div class="box">
+    <h3><span class="when tnum">2026.10.23 金</span>ピースコンサート</h3>
+    <p>配信：ピースコンサート実行委員会</p>
+    <p class="liveurl" data-k="23"></p>
+  </div>
+  <div class="box">
+    <h3><span class="when tnum">2026.10.24 土・10.25 日</span>読谷まつり</h3>
+    <p>配信：FMよみたん<br>ラジオ 78.6MHz でも、2日間とも生中継します。</p>
+    <p class="liveurl" data-k="2425"></p>
+  </div>
+
+  <h3 class="subh">オンライン会場</h3>
+  <p class="lede">配信を大きな画面でご覧いただけるお店です。</p>
+  <div class="box">
+    <h3><span class="when">10月23日（金）17:00〜21:00</span>糸満市場いとま〜る</h3>
+    <ul>
+      <li>糸満市糸満989-83</li>
+      <li><a class="tnum" href="tel:0989871037">098-987-1037</a></li>
+    </ul>
+  </div>
+  <div class="box">
+    <h3><span class="when">まつり期間中</span>Mom’s Chicken yomitan</h3>
+    <ul>
+      <li>読谷村大湾35-1</li>
+      <li><a class="tnum" href="tel:09019451159">090-1945-1159</a></li>
+      <li><a href="https://www.instagram.com/momschickenyomitan/" target="_blank" rel="noopener">Instagram ↗</a></li>
+    </ul>
+  </div>
+  <div class="note">営業時間・ご利用方法は、各店舗へ直接お問い合わせください。</div>
+</section>
+
 <section id="events">
   <div class="sechead"><h2>展示・イベント</h2><span class="en">EXHIBITIONS</span><i class="rule"></i></div>
   <div id="eventList"></div>
@@ -384,9 +455,17 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
     </ul>
     <div class="note warn" style="margin-top:14px">
       <p><b>うるま市石川多目的ドームには駐車できません。</b></p>
-      <p style="margin-top:6px">臨時駐車場：うるま市石川体育館横駐車場（うるま市石川石崎1丁目2）<br>
-      臨時駐車場から無料シャトルバスで送迎します。</p>
+      <p style="margin-top:6px">お車でお越しの方は、臨時駐車場をご利用ください。</p>
     </div>
+    <h4 class="fh">臨時駐車場・無料シャトルバス</h4>
+    <ul>
+      <li>うるま市石川体育館横駐車場（うるま市石川石崎1丁目2）</li>
+      <li>会場まで約1.8km（車で約6分）</li>
+      <li>臨時駐車場 ⇔ 闘牛大会会場 を無料シャトルバスで送迎します</li>
+      <li>シャトルバス運行　10月18日（日）10:00〜16:00</li>
+    </ul>
+    <p style="margin-top:12px"><a class="ytbtn" href="https://www.google.com/maps/dir/?api=1&destination=26.426175%2C127.830369&travelmode=driving" target="_blank" rel="noopener">臨時駐車場までの道順 ↗</a></p>
+    <p style="margin-top:10px"><a href="https://www.google.com/maps/search/?api=1&query=26.426175%2C127.830369" target="_blank" rel="noopener">臨時駐車場の場所だけを見る ↗</a></p>
   </div>
 </section>
 
@@ -418,13 +497,18 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
     <h3>駐車場</h3>
     <p>一般駐車場は3か所あります（いずれも無料）。</p>
     <ul>
-      <li>会場の東側（オキハム平和の森球場 北側・国道58号寄り）</li>
-      <li>読谷中学校のとなり（伝統工芸総合センター側）</li>
-      <li>ゆんた市場のとなり（県道6号線沿い）</li>
+      <li>会場の東側（オキハム平和の森球場・読谷村陸上競技場の東側）</li>
+      <li>読谷中学校の南側</li>
+      <li>JAおきなわ読谷集選果場の前</li>
     </ul>
     <div class="note warn" style="margin-top:14px">
       <p><b>ゆんラボ・未来館はまつりの駐車場ではありません。</b></p>
     </div>
+    <figure class="mapwrap" id="parkMap" hidden>
+      <div class="mapbox"><iframe id="parkMapFrame" loading="lazy" allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade" title="駐車場の位置（Googleマイマップ）"></iframe></div>
+      <figcaption>ピンをタップすると駐車場の名前が出ます。<a id="parkMapLink" href="#" target="_blank" rel="noopener">大きな地図で開く ↗</a></figcaption>
+    </figure>
     <p style="margin-top:10px">混雑が見込まれます。鳳バスの臨時便もご利用ください。</p>
   </div>
   <div class="box">
@@ -446,10 +530,6 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
     <p>会場内および周辺でのドローン撮影は禁止です。</p>
   </div>
   <div class="box">
-    <h3>FMよみたんで生中継</h3>
-    <p>ラジオ 78.6MHz とインターネットで、2日間とも生中継します。</p>
-  </div>
-  <div class="box">
     <h3>荒天時</h3>
     <p>荒天の場合は、内容を変更または中止することがあります。当日の実施については、このサイトの更新情報でお知らせします。</p>
   </div>
@@ -468,6 +548,7 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
     Cookieを使って匿名のアクセス情報を集めており、個人を特定する情報は含まれません。
     収集されたデータは<a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener">Googleのプライバシーポリシー</a>に基づいて管理されます。
     <a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener">オプトアウト</a>により収集を停止できます。</p>
+    <p id="gaMap" hidden style="font-size:.76rem;margin:8px 0 0">また、駐車場の地図にGoogleマップを利用しています。地図を表示した際にGoogleへ接続情報が送信されます。</p>
   </div>
   <p class="cp">© 読谷まつり実行委員会</p>
 </div></footer>
@@ -484,6 +565,8 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
    d=日付 / tag=ラベル / pri:1 でラベルが濃い紫（緊急告知用） / t=本文
    ============================================================ */
 var NEWS=[
+ {d:'2026.10.15',tag:'重要',pri:1,t:'10月18日（日）の闘牛大会は、うるま市石川多目的ドームに駐車できません。臨時駐車場と無料シャトルバスの案内を「闘牛大会」に掲載しました。'},
+ {d:'2026.10.15',tag:'お知らせ',t:'ライブ配信とオンライン会場の案内を掲載しました。配信URLは決まりしだいお知らせします。'},
  {d:'2026.10.07',tag:'更新',t:'駐車場の案内と、農産物ブース・黒糖づくり体験を追加しました。'},
  {d:'2026.10.06',tag:'更新',t:'鳳バス臨時便の運賃を掲載しました。創作「進貢船」一般開放の場所、ジュニアフェスティバル・読谷山花織展示即売会の時間、ピースコンサートの出演者表記を更新しました。'},
  {d:'2026.10.05',tag:'お知らせ',t:'鳳バス臨時便（北・南・西ルート）の時刻表を「交通」に掲載しました。'},
@@ -707,8 +790,35 @@ document.addEventListener('click',function(e){
     renderBus(r.dataset.r);return}
 });
 
-/* ---------- アクセス解析の注記（GA_IDを設定したときだけ表示） ---------- */
-if(typeof GA_ID==='string' && GA_ID){ var gn=$('#gaNotice'); if(gn) gn.hidden=false }
+/* ---------- ライブ配信のURL（設定したときだけボタンを表示） ---------- */
+(function(){
+  var u={'23':typeof LIVE_URL_23==='string'?LIVE_URL_23:'',
+         '2425':typeof LIVE_URL_2425==='string'?LIVE_URL_2425:''};
+  $$('.liveurl').forEach(function(el){
+    var v=u[el.dataset.k];
+    el.innerHTML = (v && /^https:\/\//.test(v))
+      ? '<a class="ytbtn" href="'+esc(v)+'" target="_blank" rel="noopener">配信を見る ↗</a>'
+      : '<span class="pending">配信URLは決まりしだい、このページに掲載します。</span>';
+  });
+})();
+
+/* ---------- 駐車場の地図（MAP_EMBEDを設定したときだけ表示） ---------- */
+var MAP_ON=false;
+(function(){
+  if(typeof MAP_EMBED!=='string' || !MAP_EMBED) return;
+  if(!/^https:\/\/www\.google\.com\/maps\/(d\/)?embed/.test(MAP_EMBED)) return;
+  var f=$('#parkMapFrame'); if(!f) return;
+  f.src=MAP_EMBED;
+  var a=$('#parkMapLink');
+  if(a) a.href=MAP_EMBED.replace('/maps/d/embed','/maps/d/viewer').replace('/maps/embed','/maps');
+  $('#parkMap').hidden=false; MAP_ON=true;
+})();
+
+/* ---------- 外部送信の注記（GA_ID／MAP_EMBEDを設定したときだけ表示） ---------- */
+if((typeof GA_ID==='string' && GA_ID) || MAP_ON){
+  var gn=$('#gaNotice'); if(gn) gn.hidden=false;
+  var gm=$('#gaMap'); if(gm && MAP_ON) gm.hidden=false;
+}
 
 /* ---------- カウントダウン ---------- */
 (function(){
