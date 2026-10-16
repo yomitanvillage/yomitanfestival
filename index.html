@@ -193,6 +193,11 @@ ol.prog > li.fire{border-left-color:var(--gold)}
 .ptime{font-family:var(--ff-m);font-weight:800;font-size:1.1rem;line-height:1.35}
 .pn{font-weight:700;font-size:1.04rem;line-height:1.5}
 .pnote{font-size:.84rem;color:var(--ink-2);margin-top:4px}
+.palert{margin-top:10px;padding:13px 15px;border-radius:10px;background:#FBEFEC;
+  border-left:4px solid var(--beni);font-size:.86rem;line-height:1.85;color:var(--ink)}
+.palert h4{margin:0 0 6px;font-family:var(--ff-g);font-size:.9rem;font-weight:800;color:var(--beni)}
+.palert p{margin:0}
+.palert p + p{margin-top:9px}
 .pwhy{margin-top:9px;padding:10px 12px;border-radius:10px;background:var(--plum-50);
   border-left:3px solid var(--plum-300);font-size:.85rem;line-height:1.8;color:var(--ink)}
 ul.det{list-style:none;margin:9px 0 0;padding:0;font-size:.85rem;color:var(--ink-2);line-height:1.8}
@@ -731,6 +736,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
    d=日付 / tag=ラベル / pri:1 でラベルが濃い紫（緊急告知用） / t=本文
    ============================================================ */
 var NEWS=[
+ {d:'2026.10.15',tag:'重要',pri:1,t:'今年の創作「進貢船」は、会場の一部が工事中のため、船を動かさずに演目を行います。詳しくはプログラム（10月25日 17:20）をご覧ください。'},
  {d:'2026.10.15',tag:'重要',pri:1,t:'会場マップを公開しました。第52回は会場レイアウトが大きく変わります。出店一覧（59店）とマークの意味もあわせてご覧ください。'},
  {d:'2026.10.15',tag:'重要',pri:1,t:'10月18日（日）の闘牛大会は、うるま市石川多目的ドームに駐車できません。臨時駐車場と無料シャトルバスの案内を「闘牛大会」に掲載しました。'},
  {d:'2026.10.15',tag:'お知らせ',t:'ライブ配信とオンライン会場の案内を掲載しました。配信URLは決まりしだいお知らせします。'},
@@ -808,6 +814,16 @@ var PROG={
         '波平棒：波平子ども棒術クラブ','前之浜：儀間代利美琉舞練場',
         '谷茶前：知名菊美琉舞研究所','座喜味棒：座喜味子ども会']},
   {t:'17:20',n:'創作「進貢船（しんくうせん）」',cls:'hl',
+   al:'<h4>今年の創作「進貢船」について</h4>'+
+      '<p>第52回は、会場の一部が工事中のため、<b>進貢船が動くスペースを確保できません。</b>'+
+      'このため今年は、<b>船を定位置に据えたまま</b>演目を行います。'+
+      '例年のように船が会場内を進む場面はありません。'+
+      '楽しみにしてくださっていた皆さまには、おわび申し上げます。</p>'+
+      '<p>いっぽうで、今年ならではのこともあります。船はまつりの期間中ずっと会場に据えられ、'+
+      '<b>間近でご覧いただけます</b>（一般開放：10月24日 15:30〜18:00／10月25日 12:30〜15:00）。</p>'+
+      '<p>また、船が動かないぶん、吹奏楽・合唱・太鼓隊・棒術・踊り——'+
+      '<b>出演者一人ひとりの姿が、これまで以上によく見える</b>舞台になります。'+
+      '演目そのものは例年どおり、村内の多くの団体が総力を挙げて臨みます。</p>',
    why:'1372年、読谷山の泰期ら若者達の乗った進貢船が出航。これが琉球王国と中国の大交易時代の幕開けとなりました。帰還した喜びを再現する創作で、出演者と大観衆が一体となる読谷まつりのフィナーレです。',
    det:[{g:'ナレーション',items:['読谷高校（放送部）']},
         {g:'「調」',items:['吹奏楽演奏：読谷小・読谷中・古堅中・読谷高校',
@@ -857,7 +873,7 @@ var EVENTS=[
   items:['10月25日（日）決勝戦 8:30試合開始予定（ゆんたんざソフトボール場）','12:30 まつりステージにて表彰式']},
  {h:'創作「進貢船」一般開放',when:'まつり会場内',
   items:['10月24日（土）15:30〜18:00','10月25日（日）12:30〜15:00'],
-  p:'本番で使う進貢船を間近で見ることができます。'}
+  p:'本番で使う進貢船を間近で見ることができます。今年は船を動かさないため、2日間ともじっくりご覧いただけます。'}
 ];
 
 /* ---------- 描画 ---------- */
@@ -906,6 +922,7 @@ function renderProg(day){
       '<div class="ptime tnum">'+esc(p.t)+'</div>'+
       '<div><div class="pn">'+esc(p.n)+'</div>'+
       (p.note?'<p class="pnote">'+esc(p.note)+'</p>':'')+
+      (p.al?'<div class="palert">'+p.al+'</div>':'')+
       (p.why?'<p class="pwhy">'+esc(p.why)+'</p>':'')+
       detHTML(p.det)+'</div></li>'}).join('');
 }
