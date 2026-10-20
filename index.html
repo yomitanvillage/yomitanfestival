@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="第52回読谷まつり公式サイト。2026年10月24日（土）・25日（日）読谷村運動広場で開催。10月23日（金）はピースコンサート。">
+<meta name="description" content="【中止】台風第30号の接近に伴い、第52回読谷まつり（10月23日のピースコンサート、24日・25日のまつり本番）の全日程を中止します。振替開催はありません。">
 <meta name="theme-color" content="#41205F">
 <link rel="canonical" href="https://yomitanvillage.github.io/yomitanfestival/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="第52回 読谷まつり">
-<meta property="og:title" content="第52回 読谷まつり｜2026年10月24日・25日">
-<meta property="og:description" content="読谷村運動広場で開催。10月23日（金）はピースコンサート。">
+<meta property="og:title" content="【中止】第52回 読谷まつり">
+<meta property="og:description" content="台風第30号の接近に伴い、10月23日（金）〜25日（日）の全日程を中止します。振替開催はありません。">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:url" content="https://yomitanvillage.github.io/yomitanfestival/">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://yomitanvillage.github.io/yomitanfestival/img/og-image.jpg">
+<meta property="og:image" content="https://yomitanvillage.github.io/yomitanfestival/img/og-image-cancel.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="第52回 読谷まつり　2026年10月24日・25日　読谷村運動広場">
+<meta property="og:image:alt" content="【中止】第52回 読谷まつり　台風第30号の接近に伴い、10月23日（金）〜25日（日）の全日程を中止します">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2341205F%27/%3E%3Cg fill=%27%23E3B63C%27%3E%3Crect x=%279%27 y=%274%27 width=%274%27 height=%274%27/%3E%3Crect x=%2719%27 y=%274%27 width=%274%27 height=%274%27/%3E%3Crect x=%274%27 y=%279%27 width=%274%27 height=%274%27/%3E%3Crect x=%2724%27 y=%279%27 width=%274%27 height=%274%27/%3E%3Crect x=%274%27 y=%2719%27 width=%274%27 height=%274%27/%3E%3Crect x=%2724%27 y=%2719%27 width=%274%27 height=%274%27/%3E%3Crect x=%279%27 y=%2724%27 width=%274%27 height=%274%27/%3E%3Crect x=%2719%27 y=%2724%27 width=%274%27 height=%274%27/%3E%3C/g%3E%3Crect x=%2714%27 y=%2714%27 width=%274%27 height=%274%27 fill=%27%23F0F0F0%27/%3E%3C/svg%3E">
 <style>
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -66,7 +66,54 @@ img{max-width:100%}
   var LIVE_URL_23   = ''; // 10/23 ピースコンサート（ピースコンサート実行委員会）
   var LIVE_URL_2425 = ''; // 10/24・25 まつり本番（FMよみたん）
 </script>
-<title>第52回 読谷まつり</title>
+<!-- ============================================================
+     開催状況（中止・変更のお知らせ）
+
+     level を 'cancel' にすると、ページ最上部に赤いバーが出て、
+     カウントダウンと当日バーが自動で止まります。
+     'normal' のあいだは何も表示されません。
+
+     ★ level だけでなく、title と body も必ず書いてください。
+       level だけ変えると、赤いバーに既定の文言が出るだけになります。
+
+     例）全面中止にするとき
+       level:   'cancel',
+       updated: '10月22日（水）12:00',
+       title:   '第52回読谷まつりは中止となりました',
+       body:    '<h3>中止のお知らせ</h3><p>台風第30号の接近に伴い…</p>',
+       marks:   { program:'…', access:'…' },
+       fold:    ['access','map','live','events'],
+       tiles:   ['program','access','map','live','events','peace']
+
+     そのままコピーできる文例は「中止・変更のお知らせ手順.md」にあります。
+     ============================================================ -->
+<script>
+  var STATUS = {
+    level:   'cancel',   // 'normal'（通常） / 'cancel'（中止・変更あり）
+    updated: '2026年10月20日（火）',
+    title:   '第52回読谷まつりは中止となりました',
+    body:    '<h3>第52回読谷まつり 中止のお知らせ</h3>'+
+             '<p>台風第30号の接近に伴い、来場者・出演者・出店者の安全を最優先し、'+
+             '<b>10月23日（金）のピースコンサート、24日（土）・25日（日）の読谷まつりの全日程を中止</b>'+
+             'することを決定しました。</p>'+
+             '<ul><li>振替開催は行いません</li>'+
+             '<li>当日、会場へはお越しにならないでください</li>'+
+             '<li>一般駐車場①〜⑤は開放しません。鳳バス臨時便も運休します</li></ul>'+
+             '<p>開催に向けて準備を重ねてくださった出演者・出店者・協賛者・ボランティアの皆さま、'+
+             'そして楽しみにしてくださっていた皆さまに、心より感謝とお詫びを申し上げます。</p>'+
+             '<p>お問い合わせ：読谷まつり実行委員会事務局（読谷村役場内）'+
+             '<a class="tnum" href="tel:0989829201">098-982-9201</a></p>',
+    marks:   { program:'10月23日・24日・25日のプログラムは、すべて中止となりました。',
+               access:'一般駐車場①〜⑤は開放しません。鳳バス臨時便も運休します。',
+               map:'会場は開放しません。出店もすべて中止となりました。',
+               events:'まつり会場での催しは中止です。各施設の通常の開館状況については、それぞれの施設へお問い合わせください。',
+               peace:'10月23日（金）のピースコンサートは中止となりました。',
+               live:'ライブ配信は行いません。オンライン会場での上映もありません。' },
+    fold:    ['access','map','live','events'],
+    tiles:   ['program','access','map','live','events','peace']
+  };
+</script>
+<title>【中止】第52回 読谷まつり</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
@@ -278,6 +325,25 @@ ul.plots li span{display:block;font-size:.8rem;color:var(--ink-3);margin-top:2px
 .mapwrap figcaption a{margin-left:8px;white-space:nowrap}
 @media(min-width:620px){.mapbox{padding-top:56.25%}}
 
+/* ===== 開催状況のお知らせ ===== */
+.sbar{background:var(--beni);color:#fff}
+.sbar-in{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;padding-block:11px}
+.sbar b{font-family:var(--ff-m);font-weight:800;font-size:1.02rem;line-height:1.5}
+.sbar span{font-size:.76rem;color:#FFD9D1;font-variant-numeric:tabular-nums}
+.snotice{margin-top:22px;padding:18px 20px;border-radius:16px;background:#FBEFEC;
+  border:1px solid #E7B7AC;border-left:5px solid var(--beni);
+  font-size:.93rem;line-height:1.9;color:var(--ink);box-shadow:var(--shadow)}
+.snotice h3{font-family:var(--ff-m);font-size:1.18rem;color:var(--beni);margin-bottom:9px}
+.snotice p{margin:0}
+.snotice p + p{margin-top:11px}
+.snotice ul + p{margin-top:11px}
+.snotice ul{margin:10px 0 0;padding-left:1.2em;font-size:.9rem;color:var(--ink-2)}
+.snotice ul li{margin-top:4px}
+.secmark{margin:-4px 0 14px;padding:11px 14px;border-radius:10px;background:#FBEFEC;
+  border-left:4px solid var(--beni);font-size:.9rem;font-weight:700;color:var(--beni);
+  line-height:1.8}
+.gidx a span.x{color:var(--beni);font-weight:800}
+
 /* ===== 当日バー ===== */
 .daybar{background:var(--beni);color:#FFF3F0}
 .daybar-in{display:grid;grid-template-columns:1fr auto;gap:1px 12px;padding-block:9px;
@@ -447,6 +513,10 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
   </div>
 </div></header>
 
+<div class="sbar" id="sBar" hidden><div class="wrap sbar-in">
+  <b id="sBarT"></b><span id="sBarU"></span>
+</div></div>
+
 <div class="daybar" id="dayBar" hidden><div class="wrap daybar-in">
   <span class="db-d" id="dbDate"></span>
   <span class="db-n" id="dbNext"></span>
@@ -467,6 +537,8 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
   </div>
   <svg class="selv" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="100%" height="100%" fill="url(#selvage)"/></svg>
 </section>
+
+<div class="wrap" id="sNoticeWrap" hidden><div class="snotice" id="sNotice"></div></div>
 
 <!-- 写真を差し替えるときは img/hero.webp を同じファイル名で上書きしてください -->
 <div class="wrap">
@@ -758,12 +830,15 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
 var $=function(s){return document.querySelector(s)};
 var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var ST=(typeof STATUS==='object'&&STATUS)?STATUS:{level:'normal'};
+var ST_NORMAL=(!ST.level||ST.level==='normal');
 
 /* ============================================================
    更新情報　※ 新しいものを上に書いてください
    d=日付 / tag=ラベル / pri:1 でラベルが濃い紫（緊急告知用） / t=本文
    ============================================================ */
 var NEWS=[
+ {d:'2026.10.20',tag:'重要',pri:1,t:'台風第30号の接近に伴い、来場者・出演者・出店者の安全を最優先し、10月23日（金）のピースコンサート、24日（土）・25日（日）の読谷まつりの全日程を中止することを決定しました。振替開催は行いません。一般駐車場①〜⑤は開放せず、鳳バス臨時便も運休します。当日、会場へはお越しにならないでください。'},
  {d:'2026.10.20',tag:'お知らせ',t:'10月18日（日）に行われた読谷まつり 第29回「闘牛大会」の結果を掲載しました。優勝牛は「居酒屋無垢家號弐ノ膳」です。'},
  {d:'2026.10.19',tag:'重要',pri:1,t:'台風第30号の接近が心配されていましたが、気象庁の予報で暴風のおそれがないことから、第52回読谷まつりを予定どおり開催することを決定しました。10月23日（金）のピースコンサート、24日（土）・25日（日）の読谷まつりは、いずれも予定どおり行います。今後、天候により変更が生じた場合は、当サイトにてお知らせします。'},
  {d:'2026.10.15',tag:'重要',pri:1,t:'今年の創作「進貢船」は、会場の一部が工事中のため、船を動かさずに演目を行います。詳しくはプログラム（10月25日 17:20）をご覧ください。'},
@@ -1167,7 +1242,7 @@ setMapView('all');
 
 /* ---------- 当日バー（10/24・25 のみ表示） ---------- */
 (function(){
-  var bar=$('#dayBar'); if(!bar) return;
+  var bar=$('#dayBar'); if(!bar||!ST_NORMAL) return;
   var now=new Date();
   var jst=new Date(now.getTime()+(now.getTimezoneOffset()+540)*60000);
   var y=jst.getFullYear(), m=jst.getMonth()+1, d=jst.getDate();
@@ -1187,8 +1262,47 @@ setMapView('all');
 
 /* ---------- カウントダウン ---------- */
 (function(){
+  if(!ST_NORMAL) return;
   var diff=Math.ceil((new Date('2026-10-23T00:00:00+09:00')-new Date())/86400000);
   if(diff>0){$('#cdn').textContent=diff;$('#cd').hidden=false}
+})();
+
+/* ---------- 開催状況のお知らせ（STATUS） ---------- */
+(function(){
+  if(ST_NORMAL) return;
+  $('#sBarT').textContent = ST.title || '開催内容に変更があります';
+  $('#sBar').hidden=false;
+  if(ST.updated){ $('#sBarU').textContent='最終更新 '+ST.updated; }
+  if(ST.body){ $('#sNotice').innerHTML=ST.body; $('#sNoticeWrap').hidden=false; }
+
+  var marks=ST.marks||{};
+  Object.keys(marks).forEach(function(id){
+    var sec=$('#'+id), head=sec&&sec.querySelector('.sechead');
+    if(!head) return;
+    var d=document.createElement('div');
+    d.className='secmark'; d.textContent=marks[id];
+    head.parentNode.insertBefore(d, head.nextSibling);
+  });
+
+  (ST.fold||[]).forEach(function(id){
+    var sec=$('#'+id); if(!sec) return;
+    var start=sec.querySelector('.secmark')||sec.querySelector('.sechead');
+    if(!start) return;
+    var det=document.createElement('details'); det.className='det bigdet';
+    var h2=sec.querySelector('.sechead h2');
+    var sum=document.createElement('summary');
+    sum.textContent=(h2?'「'+h2.textContent+'」':'')+'の内容をみる';
+    det.appendChild(sum);
+    var n=start.nextSibling;
+    while(n){ var nx=n.nextSibling; det.appendChild(n); n=nx; }
+    sec.appendChild(det);
+  });
+
+  (ST.tiles||[]).forEach(function(id){
+    var a=document.querySelector('.gidx a[href="#'+id+'"]');
+    var sp=a&&a.querySelector('span');
+    if(sp){ sp.textContent='中止'; sp.className='x'; }
+  });
 })();
 })();
 </script>
