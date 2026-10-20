@@ -322,6 +322,25 @@ ul.plots li span{display:block;font-size:.8rem;color:var(--ink-3);margin-top:2px
 .mapfig figcaption{padding:11px 14px;font-size:.82rem;color:var(--ink-2);
   border-top:1px solid var(--line);line-height:1.8}
 .mapfig figcaption a{white-space:nowrap}
+.champ{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin-top:12px;
+  padding:13px 15px;border-radius:12px;background:linear-gradient(135deg,#FBF3DC,#F6E6BE);
+  border:1px solid #E0C472}
+.champ span{font-family:var(--ff-g);font-size:.74rem;font-weight:800;letter-spacing:.14em;
+  color:#7A5A12}
+.champ b{font-family:var(--ff-m);font-weight:800;font-size:1.18rem;color:#4A3608;line-height:1.5}
+ol.bouts{list-style:none;margin:8px 0 0;padding:0;
+  display:flex;flex-direction:column;gap:8px}
+ol.bouts > li{background:var(--surf);border:1px solid var(--line);border-radius:12px;
+  padding:11px 13px}
+.bt{font-family:var(--ff-m);font-size:.82rem;font-variant-numeric:tabular-nums;
+  color:var(--plum-600);font-weight:700}
+.bp{display:grid;grid-template-columns:1fr 1.6em 1fr;gap:6px;align-items:center;margin-top:5px}
+.bp .n{font-size:.92rem;font-weight:700;line-height:1.5}
+.bp .n.lose{font-weight:400;color:var(--ink-2)}
+.bp .vs{text-align:center;font-size:.76rem;color:var(--ink-3)}
+.wb{display:inline-block;margin-right:5px;padding:1px 6px;border-radius:5px;
+  background:var(--beni);color:#fff;font-family:var(--ff-g);font-size:.66rem;font-weight:800;
+  vertical-align:.1em}
 .bigdet{margin-top:16px}
 .bigdet > summary{min-height:48px;font-size:.88rem}
 .newsmore{margin-top:6px}
@@ -474,7 +493,7 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
     <a href="#events"><b>展示・イベント</b><span>花織・呈茶ほか</span></a>
     <a href="#peace"><b>ピースコンサート</b><span>10/23 金</span></a>
     <a href="#live"><b>ライブ配信</b><span>オンライン会場</span></a>
-    <a href="#ushi"><b>闘牛大会</b><span>10/18 日</span></a>
+    <a href="#ushi"><b>闘牛大会</b><span>10/18 結果</span></a>
     <a href="#info"><b>お願い</b><span>ごみ・荒天時</span></a>
   </nav>
 </div>
@@ -663,7 +682,15 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
 <section id="ushi">
   <div class="sechead"><h2>闘牛大会</h2><span class="en">BULLFIGHTING</span><i class="rule"></i></div>
   <div class="box">
-    <h3><span class="when tnum">2026.10.18 日</span>読谷まつり 第29回「闘牛大会」</h3>
+    <h3><span class="when tnum">2026.10.18 日・終了</span>読谷まつり 第29回「闘牛大会」結果</h3>
+    <p class="champ"><span>優勝牛</span><b>居酒屋無垢家號弐ノ膳</b></p>
+    <h4 class="fh">取組結果</h4>
+    <ol class="bouts" id="boutList"></ol>
+    <p class="busmemo">会場：うるま市石川多目的ドーム</p>
+  </div>
+  <details class="det bigdet"><summary>当日のご案内をみる（10月18日・終了）</summary>
+  <div class="box" style="margin-top:10px">
+    <h3>第29回「闘牛大会」当日のご案内</h3>
     <ul>
       <li>会場：石川多目的ドーム</li>
       <li>闘牛大会 13:00〜（開会式 12:45〜）</li>
@@ -686,6 +713,7 @@ footer .ga a{color:var(--onplum-2);text-decoration:underline}
     </figure>
     <p style="margin-top:14px"><a class="ytbtn" href="https://www.google.com/maps/dir/?api=1&destination=26.426175%2C127.830369&travelmode=driving" target="_blank" rel="noopener">臨時駐車場までの道順 ↗</a></p>
   </div>
+  </details>
 </section>
 
 <section id="info">
@@ -736,6 +764,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
    d=日付 / tag=ラベル / pri:1 でラベルが濃い紫（緊急告知用） / t=本文
    ============================================================ */
 var NEWS=[
+ {d:'2026.10.20',tag:'お知らせ',t:'10月18日（日）に行われた読谷まつり 第29回「闘牛大会」の結果を掲載しました。優勝牛は「居酒屋無垢家號弐ノ膳」です。'},
  {d:'2026.10.19',tag:'重要',pri:1,t:'台風第30号の接近が心配されていましたが、気象庁の予報で暴風のおそれがないことから、第52回読谷まつりを予定どおり開催することを決定しました。10月23日（金）のピースコンサート、24日（土）・25日（日）の読谷まつりは、いずれも予定どおり行います。今後、天候により変更が生じた場合は、当サイトにてお知らせします。'},
  {d:'2026.10.15',tag:'重要',pri:1,t:'今年の創作「進貢船」は、会場の一部が工事中のため、船を動かさずに演目を行います。詳しくはプログラム（10月25日 17:20）をご覧ください。'},
  {d:'2026.10.15',tag:'重要',pri:1,t:'会場マップを公開しました。第52回は会場レイアウトが大きく変わります。出店一覧とマークの意味もあわせてご覧ください。'},
@@ -990,6 +1019,29 @@ document.addEventListener('input',function(e){
   });
   $('#tentEmpty').hidden=!!hit;
 });
+
+/* ============================================================
+   闘牛大会 取組結果
+   [勝ち牛, 相手, 対戦時間, 種別]  種別: 'draw'=引き分け / 'att'=アトラクション
+   ============================================================ */
+var BOUTS=[
+ ['居酒屋無垢家號弐ノ膳','山幸花形','10分29秒'],
+ ['大《MEGARYU》龍','古堅モータース☆四姉妹','10分30秒'],
+ ['伊良皆圧送来雀丸','黒天龍','4分17秒'],
+ ['優之華','玉城兄弟丸ちゃん','30秒'],
+ ['ギンギラギンジ號','ハル王','30分引き分け','draw'],
+ ['チャッピー','ジェミニー','アトラクション','att']
+];
+(function(){
+  var el=$('#boutList'); if(!el) return;
+  el.innerHTML=BOUTS.map(function(b){
+    var win=!b[3];
+    return '<li><div class="bt">'+esc(b[2])+'</div><div class="bp">'+
+      '<div class="n">'+(win?'<i class="wb">勝</i>':'')+esc(b[0])+'</div>'+
+      '<div class="vs">—</div>'+
+      '<div class="n'+(win?' lose':'')+'">'+esc(b[1])+'</div></div></li>';
+  }).join('');
+})();
 
 /* ---------- 鳳バス 臨時便 ---------- */
 var BUS={
